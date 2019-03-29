@@ -1,0 +1,342 @@
+﻿@model IEnumerable<Crims.Data.Models.CustomFieldViewModel>
+
+@{
+    ViewBag.Title = "Custom Field";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Manage Custom Fields</h1>
+    <hr/>
+</section>
+
+<section class="content">
+    <table class="table table-striped table-bordered" style="width: 100%" id="TableListx">
+        <thead style="background-color: #88be4c">
+        <tr style="color: #ddd">
+            <th>S/N</th>
+            <th>Custom Field </th>
+            <th>Custom Field Type</th>
+            <th>Custom List </th>
+            <th>Custom Group</th>
+            <th>Field Size</th>
+            <th>Tab Index</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<!--Process-->
+<div class="modal fade" id="new_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="process_modal_body">
+        </div>
+    </div>
+</div>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+
+
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        var listOptions = '<option value="0">-- Select option --</option>';
+        var groupOptions = '<option value="0">-- Select option --</option>';
+        var fieldTypeOptions = '<option value="0">-- Select option --</option>';
+        var parentFieldOptions = '<option value="0">-- Select option --</option>';
+        var jtable = {};
+
+        function initField() {
+            window.customFieldScope =
+           {
+               TableId: 0,
+               CustomListId: '',
+               CustomFieldName: '',
+               CustomFieldId: '',
+               ParentFieldId: '',
+               CustomGroupId: '',
+               FieldTypeId: '',
+               CustomFieldSize: '',
+               TabIndex: '',
+               Required: ''
+           };
+        }
+       
+
+        $(document).ready(function ()
+        {
+            var tableOptions = {};
+            tableOptions.sourceUrl = baseUrl + "/CustomField/GetFields";
+            tableOptions.itemId = 'CustomFieldId';
+            tableOptions.columnHeaders = ['CustomFieldName', 'FieldTypeName', 'CustomListName', 'CustomGroupName', 'CustomFieldSize','TabIndex'];
+            var ttc = allTableManager(baseUrl, $('#TableListx'), tableOptions, 'addNewItem', 'edit', null, 'New Custom Field');
+            ttc.removeAttr('width').attr('width', 'auto');
+            jtable = ttc;
+
+            getSelectables();
+        });
+
+        function addNewItem() {
+            initField();
+            $("#process_modal_body").load(baseUrl + '/CustomField/GetView', function ()
+            {
+                $("#myModalLabel").html('Create Custom Field');
+                $("#CustomListId").html(listOptions);
+                $("#CustomGroupId").html(groupOptions);
+                $("#FieldTypeId").html(fieldTypeOptions);
+                $("#ParentFieldId").html(parentFieldOptions);
+            });
+
+        }
+
+        function edit(itemId)
+        {
+            if (itemId === undefined || itemId === null || itemId.length < 1) {
+                alert('Invalid selection');
+                return;
+            }
+            
+            $('.showBusy').fadeIn();
+            initField();
+            $.ajax({
+                url: baseUrl + '/CustomField/GetCustomField?id=' + itemId,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+                    if (!response || response.TableId < 1) {
+                        alert('Custom List information could not be retrieved. Please try again or contact Support team');
+                        return;
+                    }
+
+                    $("#process_modal_body").load(baseUrl + '/CustomField/GetView', function () {
+                        window.customFieldScope = response;
+
+                        $("#myModalLabel").html('Update Custom Field');
+                        $("#CustomFieldName").val(response.CustomFieldName);
+                        $("#CustomFieldSize").val(response.CustomFieldSize);
+                        $("#TabIndex").val(response.TabIndex);
+
+                        $("#tableId").val(response.TableId);
+
+                        $("#CustomListId").html(listOptions).val(window.customFieldScope.CustomListId);
+
+                        $("#CustomGroupId").html(groupOptions).val(window.customFieldScope.CustomGroupId);
+
+                        $("#FieldTypeId").html(fieldTypeOptions).val(window.customFieldScope.FieldTypeId);
+
+                        $("#ParentFieldId").html(parentFieldOptions).val(window.customFieldScope.ParentFieldId);
+
+                        if (window.customFieldScope.Required) {
+                            if (window.customFieldScope.Required === 1) {
+                                $("#required").attr('checked', true);
+                            }
+
+                            if (window.customFieldScope.Required === 2) {
+                                $("#notRequired").attr('checked', true);
+                            }
+                        }
+                        checkFieldType();
+                    });
+                }
+            });
+
+        }
+
+        function processCustomField()
+        {
+            var selected = $('#FieldTypeId option:selected');
+            if (selected.text() === 'List')
+            {
+                $('#CustomListId').prop("disabled", false);
+                $('#CustomFieldSize').prop("disabled", true);
+            }
+            else if (selected.text() === 'Number' || selected.text() === 'Text') {
+                $('#CustomFieldSize').prop("disabled", false);
+                $('#CustomListId').prop("disabled", true).text('Not Applicable'); //Remeber to note the final Id
+            }
+
+            if ($("#required").is(':checked') === false && $("#notRequired").is(':checked') === false) {
+                alert('Please indicate whether the Custom Field is Required or not');
+                return;
+            }
+            window.customFieldScope.CustomFieldName = $("#CustomFieldName").val();
+            window.customFieldScope.ParentFieldId = $("#ParentFieldId").val();
+            window.customFieldScope.CustomFieldSize = $("#CustomFieldSize").val();
+            window.customFieldScope.TabIndex = $("#TabIndex").val();
+            window.customFieldScope.CustomListId = $("#CustomListId").val();
+            window.customFieldScope.CustomGroupId = $("#CustomGroupId").val();
+            window.customFieldScope.FieldTypeId = $("#FieldTypeId").val();
+
+            var url = '';
+            var newField = false;
+            if (window.customFieldScope.CustomFieldId.length > 0)
+            {
+                
+                url = baseUrl + '/CustomField/EditCustomField';
+            } else {
+                newField = true;
+                url = baseUrl + '/CustomField/CreateCustomField';
+            }
+
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ customField: window.customFieldScope }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1) {
+                       return;
+                    }
+                    if (newField === true)
+                    {
+                        parentFieldOptions += '<option value="' + response.ResponseId + '">' + window.customFieldScope.CustomFieldName + '</option>';
+                    }
+                    jtable.fnClearTable();
+                    closeView();
+                }
+            });
+        }
+
+        function getAllCustomFields()
+        {
+            $.ajax({
+                url: baseUrl + '/CustomField/GetAllCustomFields',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    if (response && response.length > 0)
+                    {
+                        $.each(response, function (i, field)
+                        {
+                            parentFieldOptions += '<option value="' + field.CustomFieldId + '">' + field.CustomFieldName + '</option>';
+                        });
+                    }
+                }
+            });
+        }
+
+        function getSelectables()
+        {
+            $.ajax({
+                url: baseUrl + '/CustomField/GetCustomFieldSelectable',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    getAllCustomFields();
+
+                    if (response.CustomLists && response.CustomLists.length > 0)
+                    {
+                        $.each(response.CustomLists, function (i, list)
+                        {
+                            listOptions += '<option value="' + list.CustomListId + '">' + list.CustomListName + '</option>';
+                        });
+                    }
+                    if (response.CustomFieldTypes && response.CustomFieldTypes.length > 0)
+                    {
+                        $.each(response.CustomFieldTypes, function (i, fType) {
+                            fieldTypeOptions += '<option value="' + fType.FieldTypeId + '">' + fType.FieldTypeName + '</option>';
+                        });
+                    }
+
+                    if (response.CustomGroups && response.CustomGroups.length > 0)
+                    {
+                        $.each(response.CustomGroups, function (i, cGroup) {
+                            groupOptions += '<option value="' + cGroup.CustomGroupId + '">' + cGroup.GroupName + '</option>';
+                        });
+                    }
+                }
+            });
+        }
+
+        function changeReqStatus(status)
+        {
+            window.customFieldScope.Required = status;
+        }
+
+        function checkFieldType()
+        {
+            disableControls();
+
+            var selected = $('#FieldTypeId option:selected');
+            if (selected.val() === '8278e246b11e418097a90a70ac7ec367' || selected.text() === 'List')
+            {
+                $('#CustomListId').prop("disabled", false);
+                $('#CustomFieldSize').prop("disabled", true);
+            }
+            else if (selected.val() === '5ce9bcc02af640f4a81164768134c508' || selected.text() === 'Number' || selected.val() === 'GHZF2WHSLY' || selected.text() === 'Text')
+            {
+                $('#CustomFieldSize').prop("disabled", false);
+                $('#CustomListId').prop("disabled", true).val('a8d0b7aefc4342f7b566618576beaa9f'); //Remeber to note the final Id
+            }
+        }
+
+        function disableControls()
+        {
+            $('#CustomListId').prop("disabled", true);
+            $('#CustomFieldSize').prop("disabled", true);
+        }
+
+        function deleteField(itemId)
+        {
+            if (!itemId || itemId < 1) {
+                alert('Invalid selection');
+                return;
+            }
+
+            $('.showBusy').fadeIn();
+
+            var xhr = $.ajax({
+                url: baseUrl + '/CustomField/DeleteCustomField?customFieldTableId=' + itemId,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function () {
+                    var confirmStatus = confirm('Do you want to delete this item?');
+                    if (confirmStatus === false) {
+                        xhr.abort();
+                        return;
+                    }
+                    $('.showBusy').fadeIn();
+                },
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+                    if (!response || response.Code < 1) {
+                        return;
+                    }
+                    jtable.fnClearTable();
+                    closeView();
+                }
+            });
+        }
+
+        function closeView()
+        {
+            $('#new_modal').modal('hide');
+            $('#FieldTypeId').val('');
+            $("#required").is(':checked', false);
+            $("#notRequired").is(':checked', false);
+            $("#CustomFieldName").val('');
+            $("#CustomFieldSize").val('');
+            $("#ParentFieldId").val('');
+            $("#TabIndex").val('');
+            $("#CustomListId").val('');
+            $("#CustomGroupId").val('');
+            $("#FieldTypeId").val('');
+        }
+    </script>
+}

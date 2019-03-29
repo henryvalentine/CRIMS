@@ -1,0 +1,15 @@
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.exe.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.Properties.Resources.resources
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.csproj.GenerateResource.Cache
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.csprojResolveAssemblyReference.cache
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.exe.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\bin\x86\Release\Crims.UI.Win.Verify.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.Properties.Resources.resources
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.csproj.GenerateResource.Cache
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Win.Verify\obj\x86\Release\Crims.UI.Win.Verify.pdb

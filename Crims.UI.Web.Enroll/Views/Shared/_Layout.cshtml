@@ -1,0 +1,273 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Chams Residency and Identity Management System</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css-custom")
+    @Styles.Render("~/Content/css-admin-custom")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/bower_components/uidgerator_bundle.js"></script>
+    <style type="text/css">
+      
+        .actionCol {
+            width: 50px;
+        }
+
+        #enrolleeTable {
+            table-layout: fixed;
+            width: 1250px;
+        }
+        .select2-container{width: 100% !important;}
+        .dataTable{width: 100% !important;}
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <label id="baseUrl" style="display: none"></label>
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="@Url.Action("Index", "Home")" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>RIMS</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Chams RIMS</b></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">View Menu</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="@Url.Content("~/Images/crims-logo.png")" class="user-image" alt="User Image">
+                                    <span class="hidden-xs" style="width: 200px;" id="loginName"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="@Url.Action("MyProfile", "Account")">
+                                            <i class="fa fa-user text-aqua"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="logout()" style="cursor: pointer">
+                                            <i class="fa fa-lock text-red"></i> Signout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="@Url.Content("~/Images/crims-logo.png")" class="img-responsive" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    @*<p>Field Agent</p>*@
+                </div>
+            </div>
+            @*<div id="rl" style="display: none">@Roles.GetRolesForUser(User.Identity.GetUserId())</div>*@
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="@Url.Action("ProjectOptions", "Home")"><i class="fa fa-tasks"></i> <span>Choose a Project</span></a>
+                </li>
+                @{
+                    if (User.IsInRole("Admin"))
+                    {
+                        <li class="treeview">
+                            <a href="@Url.Action("AppSetting", "Home")"><i class="fa fa-cog"></i><span>Settings</span></a>
+                        </li>
+                    }
+                }
+                @{
+                    if (User.IsInRole("Admin") || User.IsInRole("Site_Administrator"))
+                    {
+                        <li class="treeview">
+                            <a href="@Url.Action("ApproveEnrollment", "BaseData")"><i class="fa fa-check-circle-o"></i> <span>Approve Enrollment</span></a>
+                        </li>
+                        <li class="treeview">
+                            <a href="@Url.Action("DataImport", "BaseData")"><i class="fa   fa-clipboard"></i><span>Data Import</span></a>
+                        </li>
+                        <li class="treeview">
+                            <a href="@Url.Action("NewLicense", "Home")"><i class="fa  fa-cloud-download"></i> <span>Install new License</span></a>
+                        </li>
+                    }
+                }
+
+                <li class="treeview">
+                    <a href="@Url.Action("Index", "BaseData")"><i class="fa fa-pencil-square-o"></i> <span>Enrollments</span></a>
+                </li>
+
+                <li><a href="@Url.Action("Index", "Approval")"><i class="fa fa-thumb-tack"></i><span>Approvals</span> </a></li>
+                <li class="treeview">
+                    <a href="@Url.Action("Rejections", "BaseData")"><i class="fa fa-recycle"></i> <span>Rejections</span></a>
+                </li>
+                @*<li><a ><i class="fa fa-circle-o"></i>Reports</a></li>*@
+                @{
+                    if (User.IsInRole("Admin") || User.IsInRole("Site_Administrator"))
+                    {
+                        <li><a href="@Url.Action("Users", "Account")"><i class="fa fa-users"></i><span>Users</span></a></li>
+                    }
+                }
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>Get Supports</span>
+                        </a>
+                    </li>*@
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="padding-right: 10px; padding-left: 10px;">
+        <div class="row">
+            <div class="navbar-header col-md-12">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                    <h4>Current Project : <span style="color: #008000" id="currentProjectInSession"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div><!-- /.content-wrapper -->
+    <footer class="main-footer text-primary">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>CRIMS - Copyright &copy; 2016<a href="#">. Chams Residency and Identity Management System</a>.</strong> All rights reserved.
+    </footer>
+
+
+    <!-- Add the sidebar's background. This div must be placed
+    immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
+
+<div class="angular-center-container angular-center-container-position">
+    <div class="angular-centered showBusy">
+        <img src="@Url.Content("~/Content/img/workingonit.gif")" id="loading"/>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+@RenderSection("JavaScript", required: false)
+
+<script type="text/javascript">
+
+    window.showUiBusy = function() {
+        $('.showBusy').fadeIn();
+    }
+
+    window.hideUiBusy = function() {
+        $('.showBusy').fadeOut();
+    }
+
+    $(function() {
+        window.showUiBusy();
+    });
+
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+    $('baseUrl').html(baseUrl);
+    window.baseUrl = baseUrl;
+
+    function getCallbackObj() {
+        if (callbackObj) {
+            document.callbackObj = callbackObj;
+        }
+    }
+
+    $(document).ready(function ()
+    {
+        $('.sidebar-toggle').click();
+        window.hideUiBusy();
+        $.ajax({
+            url: baseUrl + '/Home/GetCurrentSessionProject',
+            contentType: "application/json",
+            dataType: 'json',
+            type: 'GET',
+            beforeSend: function() {
+                window.showUiBusy();
+            },
+            success: function(response) {
+                window.hideUiBusy();
+                if (!response || response.LoginName.length < 1) {
+                    window.location.href = baseUrl + "/Account/Login";
+                } else {
+                    if (!response.Project || response.Project.ProjectCode.length < 1) {
+                        alert('Please specify the Project to work on');
+                        window.location.href = baseUrl + "/Home/ProjectOptions";
+                    } else {
+                        $('#loginName').html(response.LoginName);
+                        $('#currentProjectInSession').html(response.Project.ProjectName +
+                            " (" +
+                            response.Project.ProjectCode +
+                            ")");
+                        if (typeof callbackObj != 'undefined' && typeof callbackObj != null) {
+                            callbackObj.setCurrentSessionProject(JSON.stringify(response.Project));
+                        }
+                    }
+                }
+
+            }
+        });
+    });
+
+    function logout() {
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/LogOff',
+            contentType: "application/json",
+            dataType: 'json',
+            data: {},
+            beforeSend: function() { window.showUiBusy(); },
+            success: function(response) {
+                window.hideUiBusy();
+
+                if (response < 1) {
+                    return;
+                }
+
+                if (typeof callbackObj != 'undefined' && typeof callbackObj != null) {
+                    if (callbackObj !== null) {
+                        callbackObj.logOut();
+                    }
+                }
+                window.location.href = baseUrl + "/Home";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

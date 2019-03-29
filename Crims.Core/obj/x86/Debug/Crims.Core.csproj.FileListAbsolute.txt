@@ -1,0 +1,8 @@
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Crims.Core.dll.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Crims.Core.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Crims.Core.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\obj\x86\Debug\Crims.Core.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS_Inhouse\Crims.Core\obj\x86\Debug\Crims.Core.pdb

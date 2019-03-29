@@ -1,0 +1,33 @@
+﻿@model Crims.Data.Models.Project
+
+@{
+    ViewBag.Title = "Project Details";
+    Layout = null;
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel">@Model.ProjectCode - @Model.ProjectName</h1>        
+    </div>
+    <div class="box-body">
+        <table class="table table-condensed">
+            <tr><td colspan="2"><h4>@Model.ProjectDescription</h4></td></tr>
+            <tr><td>Date Created</td> <td>@Model.DateCreated</td></tr>
+            <tr><td>Expiry Date</td> <td>@Model.LicenseExpiryDate</td></tr>
+            <tr><td>License Code</td> <td>@Model.LicenceCode</td></tr>
+            <tr><td>Activation Code</td> <td>@Model.ActivationCode</td></tr>
+            <tr><td>Online Mode</td> <td>@Model.OnlineMode</td></tr>
+
+        </table>
+    </div>
+
+    <div class="box-footer">
+        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-info">Edit</button>
+        <button type="button" class="btn btn-info">Generate License Code</button>
+        <button type="button" class="btn btn-info">Deactivate Project</button>
+
+    </div>
+
+</div>

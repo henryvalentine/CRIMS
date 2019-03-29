@@ -1,0 +1,240 @@
+﻿@model IEnumerable<Crims.UI.Web.Models.AppUser>
+
+@{
+    ViewBag.Title = "Manage Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Manage Users</h1>
+    <hr />
+    <p>
+        <a data-target='#new_modal' role="button" class="btn btn-primary  btn_add" data-toggle="modal">
+            <i class="fa fa-file 2x"></i> New User
+        </a>
+    </p>
+
+</section>
+<section class="content">
+    <table class="table display" id="TableList">
+        <thead>
+        <tr>
+            <th>Full Name </th>
+            <th>Email </th>
+            <th>Phone Number </th>
+            <th>Gender </th>
+            <th>Role </th>
+            <th>Date Registered </th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.DateCreatedStr)
+                    </td>
+                    <td><a data-target='#new_modal' role='button' data-edit-id='@Html.DisplayFor(modelItem => user.Id)' class='btn btn-default editBtn' data-toggle='modal'><i class='fa fa-edit'></i></a></td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</section>
+
+<!--Details-->
+<div class="modal fade" id="new_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="new_modal_body">
+        </div>
+    </div>
+</div>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var userScope = { Id: '', ProfileId: '', FullName: '', Email: '', PhoneNumber: '', Sex: '', Role: '', Password: '', ConfirmPassword: '' };
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        var roleStr = '<option value="">-- Select Role --</option>';
+        //Get Roles
+        $(function ()
+        {
+            $.ajax({
+                url: baseUrl + '/Account/GetRoleLists',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    if (response.length < 1)
+                    {
+                      return;
+                    }
+
+                    $(response).each(function (i, o)
+                    {
+                        roleStr += '<option value="' + o.Name + '">' + o.Name.replace("_", " ") + '</option>';
+                    });
+                }
+            });
+
+            //Load the add page
+            $(".btn_add").click(function ()
+            {
+                $("#new_modal_body").load(baseUrl + '/Account/UserView', function ()
+                {
+                    $("#myModalLabel").html('Create New User');
+                    $("#Role").html(roleStr);
+                });
+
+            });
+
+            //Load the edit page
+            $(".editBtn").click(function ()
+            {
+                var itemId = $(this).data("edit-id");
+                if (itemId === undefined || itemId === null || itemId.length < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                $('.showBusy').fadeIn();
+
+                $.ajax({
+                    url: baseUrl + '/Account/GetUser?userId=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (response)
+                    {
+                        $('.showBusy').fadeOut();
+                        if (!response || response.Id.length < 1)
+                        {
+                            alert('User information could not be retrieved. Please try again or contact Support team');
+                            return;
+                        }
+
+                        $("#new_modal_body").load(baseUrl + '/Account/UserView', function () {
+                           userScope = response;
+                            $("#Role").html(roleStr);
+                            $("#myModalLabel").html('Update User');
+                            $("#FullName").val(response.FullName);
+                            $("#Email").val(response.Email);
+                            $("#PhoneNumber").val(response.PhoneNumber);
+                            $("#Sex").val(response.Sex);
+                            $("#Role").val(response.Role);
+                        });
+
+                    }
+                });
+
+            });
+            
+        });
+
+        function processUsser()
+        {
+            userScope.FullName = $("#FullName").val();
+            userScope.Email = $("#Email").val();
+            userScope.PhoneNumber = $("#PhoneNumber").val();
+            userScope.Sex = $("#Sex").val();
+            userScope.Role = $("#Role").val();
+            userScope.Password = $("#Password").val();
+            userScope.ConfirmPassword = $("#ConfirmPassword").val();
+
+            if (userScope.FullName === undefined || userScope.FullName === null || userScope.FullName.length < 1) 
+            {
+                alert('Please provide Full Name');
+                return;
+            }
+
+            if (userScope.Email === undefined || userScope.Email === null || userScope.Email.length < 1)
+            {
+                alert('Please provide a valid Email');
+                return;
+            }
+            if (userScope.PhoneNumber === undefined || userScope.PhoneNumber === null || userScope.PhoneNumber.length < 1) {
+                alert('Please provide a Phone Number');
+                return;
+            }
+           
+            if (userScope.Sex === undefined || userScope.Sex === null || userScope.Sex.length < 1) {
+                alert('Please select Gender');
+                return;
+            }
+            
+            if (userScope.Role === undefined || userScope.Role === null || userScope.Role.length < 1) {
+                alert('Please select a Role');
+                return;
+            }
+            
+
+            $('.showBusy').fadeIn();
+            var url = '';
+            if (userScope.Id.length > 0)
+            {
+                url = baseUrl + '/Account/EditUser';
+            }
+            else
+            {
+                if (userScope.Password === undefined || userScope.Password === null || userScope.Password.length < 1) {
+                    alert('Please provide a Password');
+                    return;
+                }
+
+                if (userScope.ConfirmPassword === undefined || userScope.ConfirmPassword === null || userScope.ConfirmPassword.length < 1) {
+                    alert('Please confirm Password');
+                    return;
+                }
+
+                if (userScope.Password !== userScope.ConfirmPassword) {
+                    alert('The Passwords do not match');
+                    return;
+                }
+
+                url = baseUrl + '/Account/SignUp';
+            }
+
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ user: userScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+
+    </script>
+}

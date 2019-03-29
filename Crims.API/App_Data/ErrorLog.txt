@@ -1,0 +1,167 @@
+Exception Date :: 2017-02-16 11:32:21 AM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.<ApiLogin>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 198
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-02-16 11:32:40 AM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.<ApiLogin>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 183
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-02-16 12:18:23 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.<ApiLogin>d__19.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 196
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-02-16 12:57:56 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.<ApiLogin>d__19.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 196
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-02-16 02:21:57 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.API.Controllers.AccountController.<ApiLogin>d__19.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 207
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@chams.com JOIN userprofiles o ON o.Id = t.UserInfo_Id ORDER BY o.FullName' at line 1
+
+
+Exception Date :: 2017-02-16 02:31:12 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.API.Controllers.AccountController.ApiLogin(String email, String password) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 207
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@chams.com ORDER BY o.FullName' at line 1
+
+
+Exception Date :: 2017-02-16 02:34:57 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.API.Controllers.AccountController.ApiLogin(String email, String password)
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@chams.com ORDER BY o.FullName' at line 1
+
+
+Exception Date :: 2017-03-04 02:35:35 PM
+Exception Stack Trace ::    at Newtonsoft.Json.JsonTextReader.ReadNumberIntoBuffer()
+   at Newtonsoft.Json.JsonTextReader.ParseNumber()
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Crims.API.Controllers.AccountController.ApiLogin() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 177
+Exception Source :: Newtonsoft.Json
+Exception Message :: Unexpected character encountered while parsing number: W. Path '', line 1, position 6.
+
+
+Exception Date :: 2017-03-04 02:37:05 PM
+Exception Stack Trace ::    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Crims.API.Controllers.AccountController.ApiLogin() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 177
+Exception Source :: Newtonsoft.Json
+Exception Message :: Unexpected character encountered while parsing value: e. Path '', line 0, position 0.
+
+
+Exception Date :: 2017-03-04 02:47:58 PM
+Exception Stack Trace ::    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at Crims.API.Controllers.AccountController.ApiLogin() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 169
+Exception Source :: mscorlib
+Exception Message :: One or more errors occurred.
+
+
+Exception Date :: 2017-03-04 04:53:23 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.ApiLogin() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 212
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 12:13:01 PM
+Exception Stack Trace ::    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 309
+Exception Source :: mscorlib
+Exception Message :: Input string was not in a correct format.
+
+
+Exception Date :: 2017-03-10 02:14:42 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:14:45 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:26:35 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:26:37 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:27:01 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:35:38 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:36:03 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+
+Exception Date :: 2017-03-10 02:36:19 PM
+Exception Stack Trace ::    at Crims.API.Controllers.AccountController.UserRecords() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.API\Controllers\AccountController.cs:line 289
+Exception Source :: Crims.API
+Exception Message :: Object reference not set to an instance of an object.
+
+

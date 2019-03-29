@@ -1,0 +1,338 @@
+﻿@model IEnumerable<Crims.Data.Models.BaseData>
+
+@{
+    ViewBag.Title = "Enrollment";
+    Layout = "~/Views/Shared/_Gen_Layout.cshtml";
+}
+
+<style type="text/css">
+    input {
+        text-transform: uppercase !important;
+    }
+</style>
+
+<section class="row content-header">
+    <hr>
+    <div class="row">
+        <div class="col-md-3" style="width: 10%">
+        </div>
+        <div class="col-md-9" style="width: 80%">
+            <h4>
+                Self Enrollment
+            </h4>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3" style=""></div>
+        <div class="col-md-4" style="">
+            <div class="col-md-6" style="padding-left: 0">
+            </div>
+        </div>
+        <div class="col-md-5" style="" id="tagDiv">
+            <div class="col-md-3">
+                <button role="button" class="btn btn-default  btn_add" onclick="previewForm()" style="float: right">
+                    Preview
+                </button>
+            </div>
+            <div class="col-md-5" style="width: 40%;">
+                <div class="col-md-9">
+                    <button role="button" class="btn btn-default  btn_add" onclick="printTag()" style="float: right">
+                        Print Your Tag
+                    </button>
+                </div>
+                <span style="cursor: pointer" data-html="true" class="glyphicon glyphicon-info-sign tooltipclass" title="" data-original-title="Please ensure you provide all mandatory information accurately before printing and taking your tag to a biometric capture point"></span>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br/>
+<section class="row content" id="baseDataTemplate" style="padding: 1%; ">
+    <div class="col-md-2" style="width: 10%"></div>
+    <div class="col-md-8 box box-info" style="width: 80%">
+        <div class="box-header with-border">
+            <h4 class="modal-title" id="myModalLabel">Primary Information</h4>
+        </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+              <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="basicInfo" style="margin-top: 30px">
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Project Primary Code *</label>
+                                <input type="text" class="form-control" id="ProjectPrimaryCode"  oncopy="return false" onpaste="return false" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Confirm Project Primary Code *</label>
+                                <input type="text" class="form-control" id="confirmProjectPrimaryCode"  oncopy="return false" onpaste="return false" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Title *</label>
+                                <select class="form-control" id="Title" style="text-transform: capitalize">
+                                    <option value="0">-- Select option --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Surname *</label>
+                                <input type="text" class="form-control" id="Surname" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>First Name *</label>
+                                <input type="text" class="form-control" id="Firstname" style="text-transform: capitalize"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Middle Name</label>
+                                <input type="text" class="form-control" id="MiddleName" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Gender *</label>
+                                <select class="form-control" id="Gender" style="text-transform: capitalize">
+                                    <option value="0">-- Select option --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Date of Birth *</label>
+                                <input type="text" class="form-control" id="DOB" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Valid ID Number *</label>
+                                <input type="text" class="form-control" id="ValidIdNumber" style="text-transform: capitalize"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Email *</label>
+                                <input type="text" class="form-control" id="Email"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mobile Number *</label>
+                                <input type="text" class="form-control" id="MobileNumber" style="text-transform: capitalize" maxlength="11"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="box-footer">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-info" onclick="processBaseData()">Save</button>
+                        </div>
+                        <div class="col-md-8">
+                            <button class="btn btn-default" onclick="goToCustomData()" style="float: right; display: none" id="custDtBtn">Other Information >></button>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div id="tagDivx" style="display: none">
+                    <div style="width: 100%; display: table">
+                        <div style="display: table-row">
+                            <div style="width: 100%">
+                                <h4>
+                                    Chams | RIMS
+                                </h4>
+                            </div>
+                        </div>
+                        <div style="width: 100%; display: table-row">
+                            <div style="width: 55%; display: table-cell; vertical-align: top">
+                                <div style="width: 100%; display: table-row; margin-bottom: 1px; padding-bottom: 1px">
+                                    <div style="width: 100%; display: table-cell; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0">
+                                        <h4>Name : <span id="FullName" style="font-weight: bold"></span></h4>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display: table-row; margin-bottom: 1px; padding-bottom: 0">
+                                    <div style="width: 100%; display: table-cell; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0">
+                                        <h4>Email : <span id="tEmail" style="font-weight: bold"></span></h4>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display: table-row; margin-bottom: 1px; padding-bottom: 1px">
+                                    <div style="width: 100%; display: table-cell; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0">
+                                        <h4>Code : <span id="PrimaryCode" style="font-weight: bold"></span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 15%; display: table-cell; vertical-align: top">
+                                <img id="qrCode" src="" style="width: 100%; display: block" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="col-md-2" style="width: 10%"></div>
+</section>
+
+<section class="row content" id="customDataView" style="display: none;padding: 1%; ">
+    <div class="col-md-2" style="width: 10%"></div>
+    <div class="col-md-8 box box-info" style="width: 80%">
+        <div class="box-header with-border">
+            <h4 class="modal-title">Other Information</h4>
+        </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+                <input type="hidden" id="tableId"/>
+                <div class="row">
+                    <label class="control-label col-sm-3">Names</label>
+                    <div class="col-sm-8">
+                        <h4 id="Name"></h4>
+                    </div>
+                </div>
+                <div class="row" id="uplink" style="display: none">
+                    <label class="control-label col-sm-3">
+                        Upload Data Form
+                    </label>
+                    <div class="col-md-6">
+                        <input type="file" class="form-control" id="dataForm"/>
+                    </div>
+                </div>
+                <div class="row" id="dwnLink" style="display: none">
+                    <label class="control-label col-sm-3">
+                        Download Data Form
+                    </label>
+                    <div class="col-md-8">
+                        <a id="fileDownload" style="display: none" href="" title="Download Data Form"><img src="@Url.Content("~/Content/img/download-icon-png-4392.png")" style="width: 25px; height: 25px" alt="Download Data Form"/></a>
+                        <label id="fileNotAvailable" style="display: none" href="" title="Download Data Form Unavailable">Data Form not available</label>
+                    </div>
+                </div>
+                <hr/>
+                <div class="col-md-12 customContainer">
+                    <ul class="nav nav-tabs projectTabs autoTabs" role="tablist"></ul>
+                    <div class="tab-content tabsParent customTabs"></div>
+                </div>
+                <br/>
+                <br/>
+                <div class="col-md-12">
+                    <hr/>
+                    <div class="col-md-5">
+                        <button class="btn btn-default" onclick="goToBaseData()"><< Primary Information</button>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2" style="width: 10%"></div>
+</section>
+
+<section class="content" id="preview" style="display: none; padding: 1%; ">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <button type="button" class="close" onclick="closePreviewView()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">My Enrollment</h4>
+        </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="row" style="display: none" id="bioDiv">
+                    <div class="col-md-3" style="padding-bottom: 0">
+                        <img id="photo" style="width: 200px; height: 200px">
+                    </div>
+                    <div class="col-md-8" style="padding-left: 4%">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-bottom: 7px">
+                                <label>Left Hand</label>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="lLittle" style="width: 100%" />
+                                <span style="margin-top: 2px">Little</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="lRing" style="width: 100%" />
+                                <span style="margin-top: 2px">Ring</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="lMiddle" style="width: 100%" />
+                                <span style="margin-top: 2px">Middle</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="lIndex" style="width: 100%" />
+                                <span style="margin-top: 2px">Index</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="lThumb" style="width: 100%" />
+                                <span style="margin-top: 2px">Thumb</span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12" style="margin-bottom: 7px"><label>Right Hand</label>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="rThumb" style="width: 100%" title="Right Thumb"/>
+                                <span style="margin-top: 2px">Thumb</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="rIndex" style="width: 100%"/>
+                                <span style="margin-top: 2px">Index</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="rMiddle" style="width: 100%"/>
+                                <span style="margin-top: 2px">Middle</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="rRing" style="width: 100%"/>
+                                <span style="margin-top: 2px">Ring</span>
+                            </div>
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="rLittle" style="width: 100%"/>
+                                <span style="margin-top: 2px">Little</span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div style="width: 10%" class="col-md-3">
+                                <img id="signature" style="width: 100%" />
+                                <span style="margin-top: 2px">Signature</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Project Primary Code : <span style="font-weight: bold" id="iProjectPrimaryCode"></span></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Names : <span style="font-weight: bold" id="pName"></span></h4>
+                    </div>
+                </div>
+                <div class="row" id="pDdwnLink" style="display: none">
+                    <div class="col-md-6">
+                        <h4>
+                            Download Data Form :
+                            <span style="font-weight: bold">
+                                <a id="pFileDownload" style="display: none" href="" title="Download Data Form"><img src="@Url.Content("~/Content/img/download-icon-png-4392.png")" style="width: 25px; height: 25px" alt="Download Data Form" /></a>
+                                <label id="pFileNotAvailable" style="display: none" href="" title="Download Data Form Unavailable">Data Form not available</label>
+                            </span>
+                        </h4>
+                    </div>
+                </div>
+                <hr />
+                <div id="previewSection">
+                    <div class="tab-content appDiv">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        window.baseUrl = baseUrl;
+    </script>
+  <script src="~/Scripts/projectScripts/selfEnroll.js"></script>
+}

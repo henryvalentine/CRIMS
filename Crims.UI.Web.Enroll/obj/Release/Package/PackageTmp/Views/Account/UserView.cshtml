@@ -1,0 +1,55 @@
+﻿@model Crims.UI.Web.Enroll.Models.AppUser
+@{
+    Layout = null;
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeView()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New User</h4>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <div class="form-horizontal">
+        <div class="box-body">
+            <div class="col-md-12" style="margin-bottom: 10px">
+                <label>Full Name *</label>
+                <input type="text" class="form-control" id="FullName" placeholder="Full Name *" />
+            </div>
+            <div class="col-md-12" style="margin-bottom: 10px">
+                <label>Email *</label>
+                <input type="text" class="form-control" id="Email" placeholder="Email *" />
+            </div>
+            <div class="col-md-12" style="margin-bottom: 10px">
+                <label>Phone Number *</label>
+                <input type="text" class="form-control" id="PhoneNumber" placeholder="Phone Number *" />
+            </div>
+            <div class="col-md-12" style="margin-bottom: 10px">
+                <label>Gender *</label>
+                <select id="Sex" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-12" style="margin-bottom: 10px">
+                <label>Role *</label>
+                <select id="Role" class="form-control">
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label>Password *</label>
+                <input type="password" class="form-control" id="Password" placeholder="Password *" />
+            </div>
+            <div class="col-md-6">
+                <label>Confirm Password *</label>
+                <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password *" />
+            </div>
+        </div>
+        
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-info pull-right" onclick="processUsser()">Save</button>
+        </div>
+        <!-- /.box-footer -->
+    </div>
+</div>

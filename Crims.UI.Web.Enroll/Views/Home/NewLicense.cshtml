@@ -1,0 +1,40 @@
+﻿@using WebGrease.Css.Extensions
+
+@{
+    ViewBag.Title = "New License";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br /><br />
+<section class="row content" style="margin-top: 20px; ">
+    <div class="col-md-4" style="width: 33.333%;"></div>
+    <div class="col-md-4 box box-info" style="width: 33.333%;">
+        
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <label>
+                Install New License
+            </label>
+            <input type="file" class="form-control" id="newLicense" />
+        </div>
+        <br />
+        @*<div class="col-md-12" style="margin-bottom: 10px">
+            <button class="form-control" id="genSiteCode" style="border-color: #228b22; font-weight: bold" onclick="genSiteCode()">SITE CODE</button>
+        </div>
+        <br />
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <button class="form-control" id="actCode" style="border-color: #228b22; font-weight: bold" onclick="getActCode()">ACTIVATION CODE</button>
+        </div>
+        <div class="col-md-12">
+            <button type="button" id="btnActivate" class="btn" style="background-color: #228b22; color: #fff; font-weight: bold" onclick="activateSite()">ACTIVATE</button>
+        </div>*@
+        <br /><br />
+    </div>
+    <div class="col-md-4" style="width: 33.333%;"></div>
+</section><br /><br /><br /><br /><br />
+    @section JavaScript
+    {
+        <script type="text/javascript">
+            var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+            window.baseUrl = baseUrl;
+        </script>
+        <script src="~/Scripts/projectScripts/custom-data.js" type="text/javascript"></script>
+    }

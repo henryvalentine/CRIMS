@@ -1,0 +1,40 @@
+﻿@*@model IEnumerable<Crims.Data.Models.BaseDataViewModel>*@
+
+@{
+    ViewBag.Title = "Data Import";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    input{text-transform: uppercase !important;}
+</style>
+
+<br /><br /><br /><br />
+<section class="row content" style="margin-top: 20px; ">
+    <div class="col-md-4" style="width: 33.333%;"></div>
+    <div class="col-md-4 box box-info" style="width: 33.333%;">
+        <div class="col-md-12" style="margin-bottom: 15px;">
+            <h4>Data Importation</h4>
+            <hr />
+        </div>
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <label>
+                Select Data file for import
+            </label>
+            <input type="file" class="form-control" id="importFile" />
+        </div>
+        <br />
+        <br /><br />
+    </div>
+    <div class="col-md-4" style="width: 33.333%;"></div>
+</section><br /><br /><br /><br /><br /><br /><br />
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        window.baseUrl = baseUrl;
+       
+    </script>
+  <script src="~/Scripts/projectScripts/custom-data.js"></script>
+}

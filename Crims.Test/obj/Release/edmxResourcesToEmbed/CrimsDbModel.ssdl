@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="crims_dbContext.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="crims_base_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+      <PropertyRef Name="ProjectPrimaryCode" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="11" />
+    <Property Name="CuntryCode" Type="varchar" MaxLength="3" />
+    <Property Name="ProjectPrimaryCode" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DOB" Type="varchar" MaxLength="50" />
+    <Property Name="EnrollmentDate" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="ValidIdNumber" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="crims_custom_field_types">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="FieldTypeId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="FieldTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_fields">
+    <Key>
+      <PropertyRef Name="TableId" />
+      <PropertyRef Name="CustomFieldId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomFieldId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="CustomFieldName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomFieldSize" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CustomListId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="CustomGroupId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="FieldTypeId" Type="int" Nullable="false" />
+    <Property Name="TabIndex" Type="int" Nullable="false" />
+    <Property Name="Required" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_group">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomGroupId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TabIndex" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_list">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomListId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="CustomListName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="ParentListId" Type="varchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="crims_custom_list_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomListDataId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="CustomListId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="ListDataName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_images">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="FingerPrintImage" Type="blob" Nullable="false" />
+    <Property Name="FingerIndexId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_reason">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="fingerReason" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FingerIndex" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_template">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="FingerTemplate" Type="longblob" />
+    <Property Name="UniquenessStatus" Type="int" />
+  </EntityType>
+  <EntityType Name="crims_photograph">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="PhotographTemplate" Type="blob" />
+    <Property Name="Photograph" Type="longblob" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_field">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomFieldId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_group">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CustomGroupId" Type="varchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_list">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomListId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_list_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="CustomListDataId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_projects">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" />
+    <Property Name="ProjectDescription" Type="varchar" MaxLength="225" Nullable="false" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="DateCreated" Type="date" Nullable="false" />
+    <Property Name="LicenceCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActivationCode" Type="varchar" MaxLength="50" />
+    <Property Name="OnlineMode" Type="int" Nullable="false" />
+    <Property Name="LicenseExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_signature">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="EnrollmentId" Type="int" Nullable="false" />
+    <Property Name="Signature" Type="blob" />
+  </EntityType>
+  <EntityType Name="crims_systems_features">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="FeatureId" Type="varchar" MaxLength="8" />
+    <Property Name="FeatureName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Deleted" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_user_access_rights">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="RightId" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FeatureId" Type="varchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_users">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'crims_custom_list_ibfk_1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="crims_custom_list_ibfk_1" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'crims_project_custom_field_ibfk_2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="crims_project_custom_field_ibfk_2" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'crims_project_custom_list_data_ibfk_2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="crims_project_custom_list_data_ibfk_2" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'crims_project_custom_list_ibfk_2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="crims_project_custom_list_ibfk_2" />-->
+  <EntityContainer Name="crims_dbContextStoreContainer">
+    <EntitySet Name="crims_base_data" EntityType="Self.crims_base_data" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_custom_field_types" EntityType="Self.crims_custom_field_types" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_custom_fields" EntityType="Self.crims_custom_fields" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_custom_group" EntityType="Self.crims_custom_group" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_custom_list" EntityType="Self.crims_custom_list" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_custom_list_data" EntityType="Self.crims_custom_list_data" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_finger_images" EntityType="Self.crims_finger_images" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_finger_reason" EntityType="Self.crims_finger_reason" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_finger_template" EntityType="Self.crims_finger_template" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_photograph" EntityType="Self.crims_photograph" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_project_custom_field" EntityType="Self.crims_project_custom_field" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_project_custom_group" EntityType="Self.crims_project_custom_group" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_project_custom_list" EntityType="Self.crims_project_custom_list" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_project_custom_list_data" EntityType="Self.crims_project_custom_list_data" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_projects" EntityType="Self.crims_projects" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_signature" EntityType="Self.crims_signature" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_systems_features" EntityType="Self.crims_systems_features" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_user_access_rights" EntityType="Self.crims_user_access_rights" Schema="crims_db" store:Type="Tables" />
+    <EntitySet Name="crims_users" EntityType="Self.crims_users" Schema="crims_db" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

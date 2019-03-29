@@ -1,0 +1,10 @@
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\bin\Release\Crims.UI.Win.Enroll.exe.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\bin\Release\Crims.UI.Win.Enroll.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\bin\Release\Crims.UI.Win.Enroll.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.Properties.Resources.resources
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.csproj.GenerateResource.Cache
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS2\Crims.WinApp\bin\Release\Crims.UI.Win.Enroll.exe.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS2\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.exe
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\CrimsTFS2\Crims.WinApp\obj\Release\Crims.UI.Win.Enroll.pdb

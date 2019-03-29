@@ -1,0 +1,165 @@
+﻿@using Crims.UI.Web.Enroll.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "App Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="row content" style="margin-top: 20px; margin-bottom: 50px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 box box-info" style="width: 66.6667%;">
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="custom_modal">
+                    <div class="row modal-header" style="margin-bottom: 10px">
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-12 no-padding">
+                                <h4 class="access-header" style="font-weight :bold">
+                                    App Settings
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-12" style="border-right: 1px solid #c0c0c0">
+                            <h4>User Records path : <span id="recordPath" style="font-weight: bold"></span></h4>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-12">
+                            <label>Synchronisation Time *</label>
+                            <input type="text" class="form-control date" id="syncTime"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-12">
+                            <label>Synchronisation Frequency *</label>
+                            <select class="form-control" id="synchFrequency">
+                                <option value="">-- Select Option --</option>
+                                <option value="1">Daily</option>
+                                <option value="2">Weekly</option>
+                                <option value="3">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="border-right: 1px solid #c0c0c0">
+                            <h4>Last Sync Date : <span id="lastSync" style="font-weight: bold"></span></h4>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <button onclick="setApp()" class="btn btn-adn">Save</button>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    //;
+
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+
+    var appSetting =
+    {
+        Id: '',
+        BiometricTemplatePath: '',
+        SynchronisationTime: '',
+        SynchFrequency: ''
+    };
+
+    $(".date").each(function () {
+        $(this).datetimepicker({
+            format: 'h:m',
+            datepicker: false,
+            timepicker: true,
+            onSelectDate: function (dp, $input)
+            {
+
+            }
+        });
+    });
+
+    $.ajax({
+        url: baseUrl + '/Home/GetAppSetting',
+        contentType: "application/json",
+        dataType: 'json',
+        type: 'GET',
+        beforeSend: function () { $('.showBusy').fadeIn();; },
+        success: function (response)
+        {
+            $('.showBusy').fadeOut();
+
+            if (response === undefined || response === null || response.Id === undefined || response.Id === null || response.Id.length < 1)
+            {
+                return;
+            }
+
+            appSetting = response;
+            $("#syncTime").val(response.SynchronisationTimeStr);
+            $("#recordPath").html(response.BiometricTemplatePath);
+            $("#synchFrequency").val(response.SynchFrequency);
+        }
+    });
+    
+    function setApp()
+    {
+        var synchronisationTime = $("#syncTime").val();
+        var synchFrequency = $("#synchFrequency").val();
+
+
+        if (synchronisationTime === undefined || synchronisationTime === null || synchronisationTime.length < 1)
+        {
+            alert('Please provide Synchronisation Time');
+            return;
+        }
+
+        if (synchFrequency === undefined || synchFrequency === null || synchFrequency.length < 1)
+        {
+            alert('Please provide Synchronisation Frequency');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Home/AddAppSetting',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({
+                appSetting:
+                    {
+                        Id: appSetting.Id,
+                        BiometricTemplatePath: appSetting.BiometricTemplatePath,
+                        SynchronisationTime: synchronisationTime,
+                        SynchFrequency: synchFrequency
+                    }
+            }),
+            beforeSend: function () { $('.showBusy').fadeIn();; },
+            success: function (response)
+            {
+                $('.showBusy').fadeOut();
+                alert(response.Message);
+                if (response.Code < 1)
+                {
+                    return;
+                }
+
+                appSetting.Id = response.EnrollmentId;
+            }
+        });
+    }
+
+</script>
+}
+
+

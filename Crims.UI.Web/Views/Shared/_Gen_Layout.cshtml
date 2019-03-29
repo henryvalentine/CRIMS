@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Chams Residency and Identity Management System</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css-custom")
+    @Styles.Render("~/Content/css-admin-custom")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/bower_components/uidgerator_bundle.js"></script>
+</head>
+<body class="skin-blue sidebar-mini">
+    <div>
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="" class="logo">
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Chams | RIMS</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="@Url.Content("~/Images/crims-logo.png")" class="user-image" alt="User Image">
+                                        <span class="hidden-xs" style="width: 200px;">@User.Identity.Name</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a onclick="logout()" style="cursor: pointer">
+                                                <i class="fa fa-lock text-red"></i> Signout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="" style="padding-right: 10px;padding-left: 10px;">
+            @RenderBody()
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer text-primary" style="margin-left: 0">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>CRIMS - Copyright &copy; @DateTime.Now.Year<a href="#">. Chams Residency and Identity Management System</a>.</strong> All rights reserved.
+        </footer>
+
+
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+    <div class="angular-center-container angular-center-container-position">
+        <div class="angular-centered showBusy">
+            <img src="@Url.Content("~/Content/img/workingonit.gif")" id="loading" />
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("JavaScript", required: false)
+
+    <script type="text/javascript">
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+    window.showUiBusy =  function () {
+        $('.showBusy').fadeIn();
+    }
+
+    window.hideUiBusy = function() {
+        $('.showBusy').fadeOut();
+    }
+
+    $(function() {
+        $('.showBusy').fadeOut();
+    });
+    $(function() {
+        $('.showBusy').fadeOut();
+    });
+
+    function logout() {
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/LogOff',
+            contentType: "application/json",
+            dataType: 'json',
+            data: {},
+            beforeSend: function () { $('.showBusy').fadeIn(); },
+            success: function (response) {
+                $('.showBusy').fadeOut();
+
+                if (response < 1) {
+                    return;
+                }
+
+                window.location.href = baseUrl + "/Home";
+            }
+        });
+    }
+    </script>
+</body>
+</html>

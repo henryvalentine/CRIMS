@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Crims.Data.Models.CustomFieldType>
+
+@{
+    ViewBag.Title = "Custom Field Types";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Manage Custom Field Types</h1>
+    <hr />
+    <p>
+        <a data-target="#process_modal" role="button" class="btn btn-primary btn_add" data-toggle="modal">
+            <i class="fa fa-file 2x"></i> New Custom Field Type
+        </a>
+    </p>
+</section>
+<section class="content">
+    <table class="table display" id="TableList">
+        <thead>
+        <tr>
+            <th>Name </th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FieldTypeName)
+                </td>
+                <td><a data-target="#process_modal" role='button' data-edit-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default editBtn' data-toggle='modal'><i class='fa fa-edit'></i></a></td>
+                <td><a role='button' data-delete-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default deleteBtn' data-toggle='modal'><i class='fa fa-trash-o'></i></a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</section>
+
+<!--Generic view-->
+<div class="modal fade" id="process_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="process_modal_body">
+        </div>
+    </div>
+</div>
+
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var customFieldTypeScope = { TableId: 0, FieldTypeName: '', FieldTypeId: '' }; //window.generateUid().toUpperCase()
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        $(function() 
+        {
+            //Load the add page
+            $(".btn_add")
+                .click(function() {
+                   
+                    $("#process_modal_body").load(baseUrl + "/CustomFieldType/GetView", function ()
+                    {
+                        $("#myModalLabel").html('Create Custom Field Type');
+                    });
+                });
+
+            //Load the edit page
+            $(".editBtn")
+                .click(function() {
+                    var itemId = $(this).data("edit-id");
+                    if (itemId < 1) {
+                        alert('Invalid selection');
+                        return;
+                    }
+
+                    $('.showBusy').fadeIn();
+
+                    $.ajax({
+                        url: baseUrl + '/CustomFieldType/GetCustomFieldType?id=' + itemId,
+                        contentType: "application/json",
+                        dataType: 'json',
+                        type: 'GET',
+                        success: function(response)
+                        {
+                            $('.showBusy').fadeOut();
+                            if (!response || response.TableId < 1)
+                            {
+                                alert('Project information could not be retrieved. Please try again or contact Support team');
+                                return;
+                            }
+
+                            $('#process_modal_body').load(baseUrl + '/CustomFieldType/GetView',
+                                    function() 
+                                    {
+                                        customFieldTypeScope = response;
+                                        $("#FieldTypeName").val(response.FieldTypeName);
+                                        $("#tableId").val(response.TableId);
+                                        $("#myModalLabel").html('Update Custom Field Type');
+                                    });
+                        }
+                    });
+                });
+
+            //Load the delete page
+            $(".deleteBtn").click(function ()
+             {
+                    var itemId = $(this).data("delete-id");
+                    if (!itemId || itemId < 1) 
+                    {
+                        alert('Invalid selection');
+                        return;
+                    }
+
+                    $('.showBusy').fadeIn();
+
+                    $.ajax({
+                        url: baseUrl + '/CustomFieldType/DeleteCustomFieldType?customFieldTypeTableId=' + itemId,
+                        contentType: "application/json",
+                        dataType: 'json',
+                        type: 'POST',
+                        beforeSend: function () {
+                            if (!confirm('Do you want to delete this item?'))
+                            {
+                                return;
+                            }
+                        },
+                        success: function (response)
+                        {
+                            $('.showBusy').fadeOut();
+                            alert(response.Message);
+                            if (!response || response.Code < 1)
+                            {
+                                return;
+                            }
+
+                            location.reload();
+                        }
+                    });
+                });
+        });
+        
+        function processCustomFieldType()
+        {
+            customFieldTypeScope.FieldTypeName = $("#FieldTypeName").val();
+            $('.showBusy').fadeIn();
+
+            var url = '';
+            if (customFieldTypeScope.TableId > 0)
+            {
+                url = baseUrl + '/CustomFieldType/EditCustomFieldType';
+            }
+            else
+            {
+                url = baseUrl + '/CustomFieldType/CreateCustomFieldType';
+            }
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ customFieldType: customFieldTypeScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+    </script>
+
+}

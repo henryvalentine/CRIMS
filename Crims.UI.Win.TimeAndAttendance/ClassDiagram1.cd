@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TandAProject.AppSettings" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAQAQAAMQAAAABADEAAAQIAAAQAIAAAEAAEA=</HashCode>
+      <FileName>AppSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.MainForm" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQgAAMgiAGUABBIwAACAK8kCIBRIACAAAAQAAQAIACA=</HashCode>
+      <FileName>Controls\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Program" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Controls.DefaultControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAAghAAOCAEACoAAWADAAGAEABCRACAAAAAQAAAAA=</HashCode>
+      <FileName>Controls\DefaultControl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.233" Collapsed="true" />
+  </Class>
+  <Class Name="TandAProject.Controls.EnrollFromScanner" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAkhAAOCAEACoIASADAACQEABAVAiAIhAAQAAAAA=</HashCode>
+      <FileName>Controls\EnrollFromScanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Controls.FailedVerificationControl" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBCABAAAASACAACAEAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Controls\FailedVerificationControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Controls.SettingsControl" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAIAAAACAAQBAAAASAAAACAEAQkAACAAAAAQBBBAA=</HashCode>
+      <FileName>Controls\SettingsControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Controls.SplashScreen" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAQACUAABAAAASAKAACAEAABQBAAAAACQAIACI=</HashCode>
+      <FileName>Controls\SplashScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Controls.UserInfoControl" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>4AAAAAAAASBCABAAEAyAGAACAGAAgIABAAAAAQAAAIA=</HashCode>
+      <FileName>Controls\UserInfoControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Data.ConnectionManager" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAkCACACAgAAgAACAABABAAAAQAAAAAABAAAAQAAI=</HashCode>
+      <FileName>Data\ConnectionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Models.DbTemplate" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAIAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\DbTemplates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Models.MatchingResult" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAACAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MatchingResults.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Models.UserRecord" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAMAAAAAAAGAAAAAQQAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Properties.Resources" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAAAAAAAAACAAJABAAAARAAAAAAAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Services.ApplicationController" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="TandAProject.Services.ApplicationController.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\ApplicationController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApplicationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Services.BiometricsAdapter" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\BiometricsAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Services.DataServices" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAACAAAAIAAAAAAAAIBAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Services\DataServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TandAProject.Services.NFingerprintService" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\NFingerprintService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TandAProject.Utils.Logger" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TandAProject.Services.INeurotechServices" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\INeurotechServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="TandAProject.Services.ApplicationStateChangeNotifyer">
+    <Position X="5.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApplicationDeligates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="TandAProject.Services.ApplicationMessageNotifyer" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApplicationDeligates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="TandAProject.Services.ActiveTemplateNotifyer" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApplicationDeligates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

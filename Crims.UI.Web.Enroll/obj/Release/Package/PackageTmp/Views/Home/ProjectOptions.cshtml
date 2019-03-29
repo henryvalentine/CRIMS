@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Crims.Data.Models.BaseData>
+
+@{
+    ViewBag.Title = "Project Options";
+    Layout = "~/Views/Shared/_Gen_Layout.cshtml";
+}
+
+<style type="text/css">
+    input {
+        text-transform: uppercase !important;
+    }
+</style>
+
+<section class="row content-header">
+    <br>
+    <div class="row" style="margin-top: 10%">
+        <div class="col-md-4" style=""></div>
+        <div class="col-md-4" style="">
+            <select class="form-control" id="projects" style="text-transform: capitalize" onchange="setCurrentProject()">
+                <option value="">-- Select a Project --</option>
+            </select>
+        </div>
+        <div class="col-md-4" style=""></div>
+    </div>
+    
+</section>
+<br/><br /><br /><br /><br /><br><br><br><br><br><br><br>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        $(function ()
+        {
+            $.ajax({
+                url: baseUrl + '/Account/GetUserSessionName',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                beforeSend: function () {
+                    window.showUiBusy();
+                },
+                success: function (response)
+                {
+                    window.hideUiBusy();
+                    if (!response || response.length < 1)
+                    {
+                        window.location.href = baseUrl + "/Account/Login";
+                    }
+                }
+            });
+
+            $.ajax({
+                url: baseUrl + '/Home/GetProjects',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                beforeSend: function() {
+                    window.showUiBusy();
+                },
+                success: function (projects)
+                {
+                    window.hideUiBusy();
+                    if (projects < 1)
+                    {
+                        alert('Projects could not be retrieved. Please try again later');
+                        return;
+                    }
+                    var projectOptions = '<option value="">-- Select a Project --</option>';
+                    
+                    $.each(projects,
+                        function (i, p)
+                        {
+                            projectOptions += '<option value="' + p.ProjectCode + '">' + p.ProjectName + '</option>';
+                        });
+                    $('#projects').html(projectOptions);
+                }
+            });
+
+        });
+
+        function setCurrentProject() {
+
+            var selectedProjectCode = $('#projects option:selected').val();
+            var selectedProjectName = $('#projects option:selected').text();
+            if (selectedProjectCode === undefined || selectedProjectCode === null || selectedProjectCode.length < 1) {
+                return;
+            }
+
+
+            $.ajax({
+                url: baseUrl + '/Home/SetCurrentSessionGetProject',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ project: {ProjectCode: selectedProjectCode, ProjectName: selectedProjectName}}),
+                type: 'POST',
+                beforeSend: function () { window.showUiBusy(); },
+                success: function (response) {
+                    window.hideUiBusy();
+                    if (!response || response.Code < 1)
+                    {
+                        alert(response.Message);
+                        return;
+                    }
+
+                    window.location.href = baseUrl + "/Home";
+                }
+            });
+        }
+    </script>
+}

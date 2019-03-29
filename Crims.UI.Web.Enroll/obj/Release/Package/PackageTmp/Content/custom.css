@@ -1,0 +1,65 @@
+﻿a{
+    color: #0B6A31;
+}
+.skin-blue .main-header .navbar {
+  background-color: #0B6A31 !important;
+}
+.skin-blue .main-header .logo {
+   background-color: #0B6A31 !important; 
+}
+.skin-blue .main-header .logo:hover {
+  background-color: #0B6A31 !important; 
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: #009933 !important; 
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #009933 !important; 
+}
+
+
+.angular-center-container 
+{
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    display:table;
+    pointer-events: none;
+}
+
+.angular-center-container-position
+{
+    position: fixed;
+    z-index:9999999;
+}
+
+.angular-centered 
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.skin-blue .sidebar-menu > li.header {
+  color: #FFF !important; 
+  background: #009933 !important; 
+}
+.skin-blue .sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+}
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+  color: #ffffff !important; 
+    background: #009933 !important; 
+  border-left-color: #0B6A31 !important; 
+}
+.skin-blue .sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+   background: #009933 !important; 
+}
+
+.skin-blue .sidebar a {
+  color: #FFF !important; 
+}

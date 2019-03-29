@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewBag.Title = "Manage Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Manage Users</h1>
+    <hr/>
+</section>
+<section class="content">
+    <table id="TableList2" class="table table-striped table-bordered" style="width: 100%">
+        <thead style="background-color: #88be4c">
+        <tr style="color: #ddd">
+            <th>S/N</th>
+            <th>Full Name </th>
+            <th>Email </th>
+            <th>Phone Number </th>
+            <th>Gender </th>
+            <th>Role </th>
+            <th>Date Registered </th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<!--Details-->
+<div class="modal fade" id="new_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="new_modal_body">
+        </div>
+    </div>
+</div>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var userScope = { Id: '', ProfileId: '', FullName: '', Email: '', PhoneNumber: '', Sex: '', Role: '', Password: '', ConfirmPassword: '' };
+        //;
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        var roleStr = '<option value="">-- Select Role --</option>';
+        var jtable = {};
+
+        $(function () {
+           
+            $.ajax({
+                url: baseUrl + '/Account/GetRoleLists',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response) {
+                    iniTable();
+                    window.hideUiBusy();
+                    if (response.length < 1)
+                    {
+                      return;
+                    }
+
+                    $(response).each(function (i, o)
+                    {
+                        roleStr += '<option value="' + o.Name + '">' + o.Name.replace("_", " ") + '</option>';
+                    });
+                }
+            });
+
+        });
+
+        function newUser()
+        {
+            $("#new_modal_body").load(baseUrl + '/Account/UserView', function ()
+            {
+                $("#myModalLabel").html('Create New User');
+                $("#Role").html(roleStr);
+            });
+            $('#new_modal').fadeIn();
+        }
+        
+        
+        function edit(itemId)
+        {
+            if (itemId === undefined || itemId === null || itemId.length < 1)
+            {
+                alert('Invalid selection');
+                return;
+            }
+
+            window.showUiBusy();
+
+            $.ajax({
+                url: baseUrl + '/Account/GetUser?userId=' + itemId,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    window.hideUiBusy();
+                    if (!response || response.Id.length < 1)
+                    {
+                        alert('User information could not be retrieved. Please try again or contact Support team');
+                        return;
+                    }
+
+                    $("#new_modal_body").load(baseUrl + '/Account/UserView', function () {
+                        userScope = response;
+                        $("#Role").html(roleStr);
+                        $("#myModalLabel").html('Update User');
+                        $("#FullName").val(response.FullName);
+                        $("#Email").val(response.Email);
+                        $("#PhoneNumber").val(response.PhoneNumber);
+                        $("#Sex").val(response.Sex);
+                        $("#Role").val(response.Role);
+                    });
+
+                }
+            });
+
+        }
+        
+        function processUsser()
+        {
+            userScope.FullName = $("#FullName").val();
+            userScope.Email = $("#Email").val();
+            userScope.PhoneNumber = $("#PhoneNumber").val();
+            userScope.Sex = $("#Sex").val();
+            userScope.Role = $("#Role").val();
+            userScope.Password = $("#Password").val();
+            userScope.ConfirmPassword = $("#ConfirmPassword").val();
+
+            if (userScope.FullName === undefined || userScope.FullName === null || userScope.FullName.length < 1) 
+            {
+                alert('Please provide Full Name');
+                return;
+            }
+
+            if (userScope.Email === undefined || userScope.Email === null || userScope.Email.length < 1)
+            {
+                alert('Please provide a valid Email');
+                return;
+            }
+            if (userScope.PhoneNumber === undefined || userScope.PhoneNumber === null || userScope.PhoneNumber.length < 1) {
+                alert('Please provide a Phone Number');
+                return;
+            }
+           
+            if (userScope.Sex === undefined || userScope.Sex === null || userScope.Sex.length < 1) {
+                alert('Please select Gender');
+                return;
+            }
+            
+            if (userScope.Role === undefined || userScope.Role === null || userScope.Role.length < 1) {
+                alert('Please select a Role');
+                return;
+            }
+            
+
+            window.showUiBusy();
+            var url = '';
+            if (userScope.Id.length > 0)
+            {
+                url = baseUrl + '/Account/EditUser';
+            }
+            else
+            {
+                if (userScope.Password === undefined || userScope.Password === null || userScope.Password.length < 1) {
+                    alert('Please provide a Password');
+                    return;
+                }
+
+                if (userScope.ConfirmPassword === undefined || userScope.ConfirmPassword === null || userScope.ConfirmPassword.length < 1) {
+                    alert('Please confirm Password');
+                    return;
+                }
+
+                if (userScope.Password !== userScope.ConfirmPassword) {
+                    alert('The Passwords do not match');
+                    return;
+                }
+
+                url = baseUrl + '/Account/SignUp';
+            }
+
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ user: userScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    window.hideUiBusy();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    jtable.fnClearTable();
+                    closeView();
+                }
+            });
+        }
+
+        function closeView() {
+            $('#new_modal').modal('hide');
+            $("#FullName").val('');
+            $("#Email").val('');
+            $("#PhoneNumber").val('');
+            $("#Sex").val('');
+            $("#Role").val('');
+            $("#Password").val('');
+            $("#ConfirmPassword").val('');
+        }
+
+        function iniTable()
+        {
+            var tableOptions = {};
+            tableOptions.sourceUrl = baseUrl + "/Account/GetUsers";
+            tableOptions.itemId = 'Id';
+            tableOptions.columnHeaders = ['FullName', 'Email', 'PhoneNumber', 'Sex', 'Role', 'DateCreatedStr'];
+            var ttc = allTableManager(baseUrl, $('#TableList2'), tableOptions, 'newUser', 'edit', null, 'New User');
+            ttc.removeAttr('width').attr('width', 'auto');
+            jtable = ttc;
+        }
+
+       
+    </script>
+}

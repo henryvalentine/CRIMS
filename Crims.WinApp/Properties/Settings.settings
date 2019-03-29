@@ -1,0 +1,87 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Crims.UI.Win.Enroll.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="DBPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="DBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">crims_site</Value>
+    </Setting>
+    <Setting Name="DBUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">crims</Value>
+    </Setting>
+    <Setting Name="DBPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">password</Value>
+    </Setting>
+    <Setting Name="SavedFilesDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\inetpub\wwwroot\crimsWeb\UserRecords</Value>
+    </Setting>
+    <Setting Name="FPScannerType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Futronic Single Finger</Value>
+    </Setting>
+    <Setting Name="syncDBServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">154.113.0.163</Value>
+    </Setting>
+    <Setting Name="syncDBPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="syncDBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">crims_site</Value>
+    </Setting>
+    <Setting Name="syncDBUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">crims</Value>
+    </Setting>
+    <Setting Name="syncDBPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">password</Value>
+    </Setting>
+    <Setting Name="syncServerFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\crims_site_server\\Crims\\</Value>
+    </Setting>
+    <Setting Name="LoginServiceUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost/CrimsApi/api/Account/</Value>
+    </Setting>
+    <Setting Name="AuthoriseUser" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AuthoriseOnlyUserName" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FQualityThreshold" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="SaveBiometricsToFileOption" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="syncServerMappedPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\crims_site_server\\Crims\\</Value>
+    </Setting>
+    <Setting Name="SaveBiometricsToDBOption" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UseFaceLift" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yes</Value>
+    </Setting>
+    <Setting Name="FaceListLicense" Type="System.String" Scope="User">
+      <Value Profile="(Default)">154</Value>
+    </Setting>
+    <Setting Name="WebEnrollUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost/crimsWeb</Value>
+    </Setting>
+    <Setting Name="dataFormsDestination" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://41.58.134.153/crimsApi/api/ApiHub/EnrolleeDataForms</Value>
+    </Setting>
+    <Setting Name="MatchingScore" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="ImageWidth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">154</Value>
+    </Setting>
+    <Setting Name="ImageHeight" Type="System.String" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

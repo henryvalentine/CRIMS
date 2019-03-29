@@ -1,0 +1,36 @@
+﻿@model Crims.Data.Models.CustomList
+@{
+    Layout = null;
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Custom List</h4>
+    </div>
+   <div class="form-horizontal">
+        <div class="box-body">
+            <input type="hidden" id="tableId" />
+            <div class="col-md-12">
+                <label>
+                    Custom List Name
+                </label>
+                @Html.EditorFor(model => model.CustomListName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomListName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                <label>
+                    Parent List
+                </label>
+                <select class="form-control" id="ParentListId">
+                    <option value="0">-- Select option --</option>
+                </select>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-info pull-right" onclick="processCustomList()">Save</button>
+        </div>
+        <!-- /.box-footer -->
+    </div>
+</div>

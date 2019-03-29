@@ -1,0 +1,62 @@
+Exception Date :: 2017-07-14 02:42:27 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.Throw(Exception ex)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Web.Enroll\Controllers\BaseDataController.cs:line 425
+Exception Source :: MySql.Data
+Exception Message :: The connection is already open.
+
+
+Exception Date :: 2017-07-14 02:42:40 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.Throw(Exception ex)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Web.Enroll\Controllers\BaseDataController.cs:line 425
+Exception Source :: MySql.Data
+Exception Message :: The connection is already open.
+
+
+Exception Date :: 2017-07-14 02:45:38 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.Throw(Exception ex)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param)
+Exception Source :: MySql.Data
+Exception Message :: The connection is already open.
+
+
+Exception Date :: 2017-07-21 10:39:03 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Web.Enroll\Controllers\BaseDataController.cs:line 573
+Exception Source :: MySql.Data
+Exception Message :: Unknown column 't.TableId' in 'order clause'
+
+
+Exception Date :: 2017-07-21 10:51:14 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Web.Enroll\Controllers\BaseDataController.cs:line 573
+Exception Source :: MySql.Data
+Exception Message :: Unknown column 't.TableId' in 'order clause'
+
+
+Exception Date :: 2017-07-21 11:00:15 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.ResultSet.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.get_Item(String name)
+   at Crims.UI.Web.Enroll.Controllers.BaseDataController.GetEnrollments(JQueryDataTableParamModel param) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.UI.Web.Enroll\Controllers\BaseDataController.cs:line 580
+Exception Source :: MySql.Data
+Exception Message :: Could not find specified column in results: TableId
+
+

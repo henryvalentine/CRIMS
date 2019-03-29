@@ -1,0 +1,41 @@
+private void Photo_double_click(object sender, EventArgs e)
+        {
+            if (Settings.Default.PhotoFacials)
+            {
+                //  ImageGetter ig = new ImageGetter(UserpictureBox, UserpictureBox.Width, UserpictureBox.Height, "photo", true);
+                ImageForm ig = new ImageForm();
+                ig.ShowDialog();
+                if (ig.DialogResult == DialogResult.OK)
+                {
+                    croppedPhotoImage = ig.croppedImage;
+                    UserpictureBox.Image = AppUtils.resizeImage(croppedPhotoImage, UserpictureBox.Size);
+                    ig.Dispose();
+                }
+            }
+
+            else if (Settings.Default.PhotoBK)
+            {
+                MessageBox.Show("Smoke screen BG");
+
+            }
+
+            else
+            {
+                if (File.Exists(fotoFile))
+                {
+                    using (StreamReader streamReader = new StreamReader(fotoFile))
+                    {
+                        Lic = streamReader.ReadToEnd();
+                    }
+                    AchateUnit ach = new AchateUnit(UserpictureBox, Lic);
+                    ach.ShowDialog();
+                    if (ach.DialogResult == DialogResult.OK)
+                    {
+                        croppedPhotoImage = ach.croppedImageClone;
+                        ach.Dispose();
+                    }
+                }
+                else { }
+            }
+
+        }

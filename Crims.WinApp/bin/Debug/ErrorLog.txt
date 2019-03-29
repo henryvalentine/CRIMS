@@ -1,0 +1,352 @@
+Exception Date :: 2017-07-11 01:42:30 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1076
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-11 01:42:41 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.HandleReaderException(Exception e)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.StoreRead()
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1076
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while reading from the store provider's data reader. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:00 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1012
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:07 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1040
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:07 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1075
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:08 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1075
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:10 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1045
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:10 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1069
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:10 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:54:11 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1040
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:56:12 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:56:41 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:56:41 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1012
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:56:41 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 08:56:41 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 09:12:02 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: Too many connections
+
+
+Exception Date :: 2017-07-12 10:10:06 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: Too many connections
+
+
+Exception Date :: 2017-07-12 10:10:06 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 989
+Exception Source :: EntityFramework
+Exception Message :: Too many connections
+
+
+Exception Date :: 2017-07-12 10:10:34 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1069
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:10:43 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.HandleReaderException(Exception e)
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.StoreRead()
+   at System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1075
+Exception Source :: EntityFramework
+Exception Message :: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+
+Exception Date :: 2017-07-12 10:10:44 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1069
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:10:45 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1040
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:10:49 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1069
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:11:03 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1069
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:11:11 AM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Data\CrimsDbContext.cs:line 74
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1099
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-07-12 10:11:25 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Crims.UI.Win.Enroll.DataServices.DatabaseOpperations.SaveEnrollmentRecordToDb(EnrollmentRecord enrollmentRecord) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.WinApp\DataServices\DatabaseOpperations.cs:line 1075
+Exception Source :: EntityFramework
+Exception Message :: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+

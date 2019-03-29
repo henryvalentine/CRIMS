@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="crims_dbContextStoreContainer" CdmEntityContainer="crims_dbEntities">
+    <EntitySetMapping Name="crims_base_data">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_base_data">
+        <MappingFragment StoreEntitySet="crims_base_data">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CuntryCode" ColumnName="CuntryCode" />
+          <ScalarProperty Name="ProjectPrimaryCode" ColumnName="ProjectPrimaryCode" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+          <ScalarProperty Name="ValidIdNumber" ColumnName="ValidIdNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_custom_field_types">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_custom_field_types">
+        <MappingFragment StoreEntitySet="crims_custom_field_types">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+          <ScalarProperty Name="FieldTypeName" ColumnName="FieldTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_custom_fields">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_custom_fields">
+        <MappingFragment StoreEntitySet="crims_custom_fields">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomFieldId" ColumnName="CustomFieldId" />
+          <ScalarProperty Name="CustomFieldName" ColumnName="CustomFieldName" />
+          <ScalarProperty Name="CustomFieldSize" ColumnName="CustomFieldSize" />
+          <ScalarProperty Name="CustomListId" ColumnName="CustomListId" />
+          <ScalarProperty Name="CustomGroupId" ColumnName="CustomGroupId" />
+          <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+          <ScalarProperty Name="TabIndex" ColumnName="TabIndex" />
+          <ScalarProperty Name="Required" ColumnName="Required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_custom_list">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_custom_list">
+        <MappingFragment StoreEntitySet="crims_custom_list">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomListId" ColumnName="CustomListId" />
+          <ScalarProperty Name="CustomListName" ColumnName="CustomListName" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ParentListId" ColumnName="ParentListId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_custom_list_data">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_custom_list_data">
+        <MappingFragment StoreEntitySet="crims_custom_list_data">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomListDataId" ColumnName="CustomListDataId" />
+          <ScalarProperty Name="CustomListId" ColumnName="CustomListId" />
+          <ScalarProperty Name="ListDataName" ColumnName="ListDataName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_finger_images">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_finger_images">
+        <MappingFragment StoreEntitySet="crims_finger_images">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="FingerPrintImage" ColumnName="FingerPrintImage" />
+          <ScalarProperty Name="FingerIndexId" ColumnName="FingerIndexId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_finger_reason">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_finger_reason">
+        <MappingFragment StoreEntitySet="crims_finger_reason">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="fingerReason" ColumnName="fingerReason" />
+          <ScalarProperty Name="FingerIndex" ColumnName="FingerIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_finger_template">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_finger_template">
+        <MappingFragment StoreEntitySet="crims_finger_template">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="FingerTemplate" ColumnName="FingerTemplate" />
+          <ScalarProperty Name="UniquenessStatus" ColumnName="UniquenessStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_photograph">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_photograph">
+        <MappingFragment StoreEntitySet="crims_photograph">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="PhotographTemplate" ColumnName="PhotographTemplate" />
+          <ScalarProperty Name="Photograph" ColumnName="Photograph" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_project_custom_field">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_project_custom_field">
+        <MappingFragment StoreEntitySet="crims_project_custom_field">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomFieldId" ColumnName="CustomFieldId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_project_custom_group">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_project_custom_group">
+        <MappingFragment StoreEntitySet="crims_project_custom_group">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="CustomGroupId" ColumnName="CustomGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_project_custom_list">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_project_custom_list">
+        <MappingFragment StoreEntitySet="crims_project_custom_list">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomListId" ColumnName="CustomListId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_project_custom_list_data">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_project_custom_list_data">
+        <MappingFragment StoreEntitySet="crims_project_custom_list_data">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="CustomListDataId" ColumnName="CustomListDataId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_projects">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_projects">
+        <MappingFragment StoreEntitySet="crims_projects">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LicenceCode" ColumnName="LicenceCode" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="OnlineMode" ColumnName="OnlineMode" />
+          <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_signature">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_signature">
+        <MappingFragment StoreEntitySet="crims_signature">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_systems_features">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_systems_features">
+        <MappingFragment StoreEntitySet="crims_systems_features">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+          <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_user_access_rights">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_user_access_rights">
+        <MappingFragment StoreEntitySet="crims_user_access_rights">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="RightId" ColumnName="RightId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_users">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_users">
+        <MappingFragment StoreEntitySet="crims_users">
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crims_custom_group">
+      <EntityTypeMapping TypeName="crims_dbContext.crims_custom_group">
+        <MappingFragment StoreEntitySet="crims_custom_group">
+          <ScalarProperty Name="TabIndex" ColumnName="TabIndex" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="CustomGroupId" ColumnName="CustomGroupId" />
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

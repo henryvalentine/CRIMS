@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="crims_dbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="crims_base_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+      <PropertyRef Name="ProjectPrimaryCode" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Firstname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="CuntryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectPrimaryCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnrollmentDate" Type="DateTime" Nullable="false" />
+    <Property Name="ValidIdNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_field_types">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="FieldTypeId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FieldTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_fields">
+    <Key>
+      <PropertyRef Name="TableId" />
+      <PropertyRef Name="CustomFieldId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomFieldId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomFieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomFieldSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomListId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomGroupId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FieldTypeId" Type="Int32" Nullable="false" />
+    <Property Name="TabIndex" Type="Int32" Nullable="false" />
+    <Property Name="Required" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_list">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomListId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomListName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ParentListId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="crims_custom_list_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomListDataId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomListId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ListDataName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_images">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="FingerPrintImage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="FingerIndexId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_reason">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="fingerReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FingerIndex" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_finger_template">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="FingerTemplate" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UniquenessStatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="crims_photograph">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="PhotographTemplate" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Photograph" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_field">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomFieldId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_group">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomGroupId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_list">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomListId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_project_custom_list_data">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="CustomListDataId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_projects">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectDescription" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+    <Property Name="LicenceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ActivationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OnlineMode" Type="Int32" Nullable="false" />
+    <Property Name="LicenseExpiryDate" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_signature">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="Signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="crims_systems_features">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="FeatureId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="FeatureName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Deleted" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_user_access_rights">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="RightId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="FeatureId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crims_users">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="crims_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="crims_base_data" EntityType="Self.crims_base_data" />
+    <EntitySet Name="crims_custom_field_types" EntityType="Self.crims_custom_field_types" />
+    <EntitySet Name="crims_custom_fields" EntityType="Self.crims_custom_fields" />
+    <EntitySet Name="crims_custom_list" EntityType="Self.crims_custom_list" />
+    <EntitySet Name="crims_custom_list_data" EntityType="Self.crims_custom_list_data" />
+    <EntitySet Name="crims_finger_images" EntityType="Self.crims_finger_images" />
+    <EntitySet Name="crims_finger_reason" EntityType="Self.crims_finger_reason" />
+    <EntitySet Name="crims_finger_template" EntityType="Self.crims_finger_template" />
+    <EntitySet Name="crims_photograph" EntityType="Self.crims_photograph" />
+    <EntitySet Name="crims_project_custom_field" EntityType="Self.crims_project_custom_field" />
+    <EntitySet Name="crims_project_custom_group" EntityType="Self.crims_project_custom_group" />
+    <EntitySet Name="crims_project_custom_list" EntityType="Self.crims_project_custom_list" />
+    <EntitySet Name="crims_project_custom_list_data" EntityType="Self.crims_project_custom_list_data" />
+    <EntitySet Name="crims_projects" EntityType="Self.crims_projects" />
+    <EntitySet Name="crims_signature" EntityType="Self.crims_signature" />
+    <EntitySet Name="crims_systems_features" EntityType="Self.crims_systems_features" />
+    <EntitySet Name="crims_user_access_rights" EntityType="Self.crims_user_access_rights" />
+    <EntitySet Name="crims_users" EntityType="Self.crims_users" />
+    <EntitySet Name="crims_custom_group" EntityType="crims_dbContext.crims_custom_group" />
+  </EntityContainer>
+  <EntityType Name="crims_custom_group">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomGroupId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TabIndex" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

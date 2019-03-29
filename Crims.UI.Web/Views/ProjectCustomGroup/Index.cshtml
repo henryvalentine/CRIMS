@@ -1,0 +1,248 @@
+﻿@using WebGrease.Css.Extensions
+@model  Tuple<List<Crims.Data.Models.CustomGroup>, List<Crims.Data.Models.ProjectCustomGroupViewModel>>
+@{
+    ViewBag.Title = "Project Custom Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h4>Project Custom Group</h4>
+    <hr />
+</section>
+<section class="content">
+    <div class="box box-info">
+        <div class="box-body">
+            <input type="hidden" id="tableId"/>
+            <div style="width: 100%; position: relative; min-height: 1px; padding-right: 15px; padding-left: 15px; margin-bottom: 12px">
+                    <label>
+                       Custom Group
+                    </label>
+                    <div class="col-md-5">
+                        <h4><span class="unselected-title">Custom Groups</span></h4>
+                        <input class="filter form-control filter-unselected" placeholder="Filter" style="margin-bottom: 5px;" type="text">
+                        <select class="unselected" style="height: 200px; width: 100%;" multiple="">
+                            @{
+                                foreach (var cg in Model.Item1)
+                                {
+                                    <option value="@cg.CustomGroupId">@cg.GroupName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-2 center-block" style="margin-top: 80px">
+                        <button type="button" class="btn btn-default col-md-8 col-md-offset-2 atr" data-type="atr" style="margin-bottom: 10px;">
+                            <span class="glyphicon glyphicon-list"></span> 
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </button> <button type="button" class="btn btn-default col-md-8 col-md-offset-2 str" data-type="str" style="margin-bottom: 20px;" disabled=""><span class="glyphicon glyphicon-chevron-right"></span></button> <button type="button" class="btn btn-default col-md-8 col-md-offset-2 stl" data-type="stl" style="margin-bottom: 10px;" disabled=""><span class="glyphicon glyphicon-chevron-left"></span></button> <button type="button" class="btn btn-default col-md-8 col-md-offset-2 atl" data-type="atl" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-chevron-left"></span> <span class="glyphicon glyphicon-list"></span></button>
+                    </div>
+                    <div class="col-md-5">
+                        <h4><span class="selected-title">Project Custom Group</span></h4>
+                        <input class="filter form-control filter-selected" placeholder="Filter" style="margin-bottom: 5px;" type="text">
+                        <select class="selected" style="height: 200px; width: 100%;" multiple="" name="">
+                            @{
+                                foreach (var cg in Model.Item2)
+                                {
+                                    <option value="@cg.CustomGroupId">@cg.CustomGroupName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                
+                </div>
+            <div class="col-md-12" style="display: none" id="saveDiv">
+                <div class="box-footer">
+                    <button type="button" class="btn btn-info pull-left" onclick="processCustomListData()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+
+        var customListDataScope =
+        {
+            TableId: 0,
+            ListDataName: '',
+            CustomListId: '',
+            CustomListDataId: window.generateUid().toUpperCase()
+        };
+        var tagInputs = [];
+        var listOptions = '<option value="0">-- Select option --</option>';
+
+
+        $(function () {
+
+            getCustomLists();
+
+            $(".editBtn").click(function ()
+            {
+                var itemId = $(this).data("edit-id");
+                if (itemId < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+                $('.showBusy').fadeIn();
+
+                $.ajax({
+                    url: baseUrl + '/CustomListData/GetCustomListData?id=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (response) {
+                        $('.showBusy').fadeOut();
+                        if (!response || response.TableId < 1) {
+                            alert('Custom List information could not be retrieved. Please try again or contact Support team');
+                            return;
+                        }
+
+                        $("#process_modal_body").load(baseUrl + '/CustomListData/GetView', function ()
+                        {
+                            customListDataScope = response;
+                            @*$("#CustomListId").html(@listOptions);*@
+                            $("#CustomListId").val(customListDataScope.CustomListId);
+                            $("#myModalLabel").html('Update Custom List Data');
+                            $("#ListDataName").val(response.ListDataName);
+                            $("#tableId").val(response.TableId);
+                        });
+                    }
+                });
+
+            });
+            //Load the delete page
+            $(".deleteBtn").click(function () {
+                var itemId = $(this).data("delete-id");
+                if (!itemId || itemId < 1) {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                $('.showBusy').fadeIn();
+
+                $.ajax({
+                    url: baseUrl + '/CustomListData/DeleteCustomListData?customListDataTableId=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'POST',
+                    beforeSend: function () {
+                        if (!confirm('Do you want to delete this item?')) {
+                            return;
+                        }
+                    },
+                    success: function (response) {
+                        $('.showBusy').fadeOut();
+                        alert(response.Message);
+                        if (!response || response.Code < 1)
+                        {
+                            return;
+                        }
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+        function processCustomListData()
+        {
+            customListDataScope.ListDataName = $("#ListDataName").val();
+            customListDataScope.CustomListId = $("#CustomListId").val();
+
+            $('.showBusy').fadeIn();
+            var url = '';
+            if (customListDataScope.TableId > 0) {
+                url = baseUrl + '/CustomListData/EditCustomListData';
+            } else {
+                url = baseUrl + '/CustomListData/CreateCustomListData';
+            }
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ customListData: customListDataScope }),
+                type: 'POST',
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1) {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+
+        function getCustomLists()
+        {
+            $.ajax({
+                url: baseUrl + '/CustomList/GetCustomLists',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    if (response.length > 0)
+                    {
+                        $.each(response, function (i, list) {
+                            listOptions += '<option value="' + list.CustomListId + '">' + list.CustomListName + '</option>';
+                        });
+
+                        $('#CustomListId').html(listOptions);
+                    }
+                }
+            });
+        }
+
+        function getListData(id)
+        {
+            if (!id || id.length < 1)
+            {
+                alert('Invalid selection!');
+                return;
+            }
+            $('#listDataDiv').fadeOut();
+            $('#saveDiv').fadeOut();
+            $.ajax({
+                url: baseUrl + '/CustomListData/GetCustomListDataByCustomList?customListId=' + id,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    if (response.length > 0) {
+
+                        var cities = new Bloodhound({
+                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
+                            local: response
+                        });
+
+                        //cities.initialize();
+
+                        $('#ListDataName').tagsinput({
+                            itemValue: 'CustomListId',
+                            itemText: 'CustomListName',
+                            //source : response
+                            typeaheadjs:
+                            {
+                                name: 'customLists',
+                                displayKey: 'CustomListName',
+                                source: cities
+                            }
+                        });
+
+                        $('#listDataDiv').fadeIn();
+                        $('#saveDiv').fadeIn();
+                    }
+                }
+            });
+        }
+    </script>
+}

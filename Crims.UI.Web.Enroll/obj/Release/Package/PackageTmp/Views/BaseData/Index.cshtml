@@ -1,0 +1,294 @@
+﻿@*@model IEnumerable<Crims.Data.Models.BaseDataViewModel>*@
+
+@{
+    ViewBag.Title = "Base Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    input{text-transform: uppercase !important;}
+    .actionCol {
+   width: 50px;
+}
+    #enrolleeTable 
+    {
+        table-layout: fixed;
+        width: 1250px;
+    }
+</style>
+
+<section class="content-header tblList">
+    <h1>Enrollments</h1>
+    <hr/>
+</section>
+<section class="content tblList">
+    
+    <table class="table table-striped table-bordered" id="enrolleeTable">
+        <thead style="background-color: #88be4c">
+        <tr style="color: #ddd">
+            <th >S/N</th>
+            <th >Code</th>
+            <th >Surname </th>
+            <th >First Name</th>
+            @*<th >Bio Data</th>*@
+            <th >Captured By</th>
+            <th >Date</th>
+            <th class="actionCol">Action</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<section id="baseDataTemplate" style="padding: 1%; display: none">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <button type="button" class="close" onclick="closeBaseDataView()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Process Base Data</h4>
+        </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+                <ul class="nav nav-tabs projectTabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#basicInfo" role="tab" data-toggle="tab">Primary Information</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="basicInfo" style="margin-top: 30px">
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-3">
+                                <label>Project Primary Code *</label>
+                                <input type="text" class="form-control" id="ProjectPrimaryCode" style="text-transform: capitalize" oncopy="return false" onpaste="return false"/>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Confirm Project Primary Code *</label>
+                                <input type="text" class="form-control" id="confirmProjectPrimaryCode" style="text-transform: capitalize" oncopy="return false" onpaste="return false"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-3">
+                                <label>Title *</label>
+                                <select class="form-control" id="Title" style="text-transform: capitalize">
+                                    <option value="0">-- Select option --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Surname *</label>
+                                <input type="text" class="form-control" id="Surname" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>First Name *</label>
+                                <input type="text" class="form-control" id="Firstname" style="text-transform: capitalize"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Middle Name</label>
+                                <input type="text" class="form-control" id="MiddleName" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Gender *</label>
+                                <select class="form-control" id="Gender" style="text-transform: capitalize">
+                                    <option value="0">-- Select option --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Date of Birth *</label>
+                                <input type="text" class="form-control" id="DOB" style="text-transform: capitalize"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Valid ID Number</label>
+                                <input type="text" class="form-control" id="ValidIdNumber" style="text-transform: capitalize"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 14px">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <input type="text" class="form-control" id="Email"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mobile Number *</label>
+                                <input type="text" class="form-control" id="MobileNumber" style="text-transform: capitalize" maxlength="11"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="box-footer">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-info" onclick="processBaseData()">Save</button>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-default" onclick="markForDelete()">Mark for Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content" id="customDataView" style="padding: 1%; display: none">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <div class="col-md-12">
+                <button type="button" class="close" onclick="closeCustomDataView()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Manage Custom Data</h4>
+            </div>
+        </div>
+        <div class="form-horizontal"  style="border: 1px solid #c0c0c0; -ms-border-radius: 5px; border-radius: 5px">
+            <div class="box-body">
+                <input type="hidden" id="tableId"/>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2" style="padding-bottom: 0">
+                                <img id="photo" style="width: 150px; height: 150px">
+                            </div>
+                            <div class="col-md-9" style="padding-left:4%">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Enrollment Id : <span style="font-weight: bold" id="EnrollmentId">7c562d11-80c1-49de-8c92-18525919eb36</span></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Primary ID : <span style="font-weight: bold" id="iProjectPrimaryCode"></span></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Names : <span style="font-weight: bold" id="Name"></span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row" style="display: none" id="bioDiv">
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="col-md-12" style="margin-bottom: 7px">
+                                        <label>Left Hand</label>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="lLittle" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Little</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="lRing" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Ring</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="lMiddle" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Middle</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="lIndex" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Index</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="lThumb" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Thumb</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="col-md-12" style="margin-bottom: 7px">
+                                        <label>Right Hand</label>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="rThumb" style="width: 100%" title="Right Thumb"/>
+                                        <span style="margin-top: 2px">Thumb</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="rIndex" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Index</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="rMiddle" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Middle</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="rRing" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Ring</span>
+                                    </div>
+                                    <div style="width: 14%" class="col-md-3">
+                                        <img id="rLittle" style="width: 100%"/>
+                                        <span style="margin-top: 2px">Little</span>
+                                    </div>
+                                </div>
+                                <div style="width: 10%" class="col-md-2">
+                                    <img id="signature" style="width: 100%"/>
+                                    <span style="margin-top: 2px">Signature</span>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-5" id="fingerReasons" style="padding-left: 4%; display: none;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Unavailable Fingerprint Reasons</h4>
+                                            KEY : <label> LF = Left Finger, RF = Right Finger</label>
+                                        </div>
+                                    </div> <br/>
+                                    <div class="row" id="fingerReasonContainer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    
+                    <div class="row" id="uplink" style="display: none">
+                        <div class="col-md-5">
+                            <label>Upload Data Form</label>
+                            <input type="file" class="form-control" id="dataForm" accept="image/*;" />
+                        </div>
+                    </div>
+                    <div class="row" id="dwnLink" style="display: none">
+                        <div class="col-md-6">
+                            <h4>
+                                Download Data Form :
+                                <span style="font-weight: bold">
+                                    <a id="fileDownload" style="display: none" href="" title="Download Data Form"><img src="~/Content/img/download-icon-png-4392.png" style="width: 25px; height: 25px" alt="Download Data Form" /></a>
+                                    <label id="fileNotAvailable" style="display: none" href="" title="Download Data Form Unavailable">Data Form not available</label>
+                                </span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-12 customContainer" style="display: none">
+                    <ul class="nav nav-tabs projectTabs autoTabs" role="tablist"></ul>
+                    <div class="tab-content tabsParent customTabs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Process-->
+<div class="modal fade" id="process_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="process_modal_body">
+        </div>
+    </div>
+</div>
+
+@section JavaScript
+{
+<script type="text/javascript">
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        window.baseUrl = baseUrl;
+       
+</script>
+    <script src="~/Scripts/projectScripts/custom-data.js"></script>
+}

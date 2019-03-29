@@ -1,0 +1,364 @@
+﻿
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<section class="content">
+    <div id="authTx" style="display: none">@User.Identity.IsAuthenticated</div>
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3 id="totalCapture">0</h3>
+                <p>Enrollments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="@Url.Action("Index", "BaseData")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3 id="totalApprovals">0<sup style="font-size: 20px"></sup>
+                </h3>
+                <p>Approvals</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="@Url.Action("Index", "Approval")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+
+    @*<div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@Model.CompletedRecords</h3>
+                    <p>Completed Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-laptop"></i>
+                </div>
+                <a class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>*@
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-orange-active">
+            <div class="inner">
+                <h3 id="photoEnrolled">0</h3>
+                <p>Photos Enrolled</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-laptop"></i>
+            </div>
+            <a class="small-box-footer">&nbsp; <i class="fa fa-arrow-circle"></i></a>
+        </div>
+    </div><!-- ./col -->
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3 id="fingerprintsEnrolled">0</h3>
+                <p>Fingerprints Enrolled</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-teal-active">
+            <div class="inner">
+                <h3 id="signature">0</h3>
+                <p>Signature Enrolled</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3 id="noPhotos">0</h3>
+                <p>No Photos</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="@Url.Action("NoPhoto", "Home")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3 id="noFingerprint">0<sup style="font-size: 20px"></sup>
+                </h3>
+                <p>No Fingerprint</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="@Url.Action("NoFingerPrint", "Home")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3 id="synchronized">0</h3>
+                <p>Synchronized</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div><!-- ./col -->
+
+</div><!-- /.row -->
+<!-- Main row -->
+@*<div class="row">
+    <!-- Left col -->
+    <section class="connectedSortable">
+        <!-- TO DO List -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <i class="ion ion-clipboard"></i>
+                <h3 class="box-title">To Do List</h3>
+                <div class="box-tools pull-right">
+                    <ul class="pagination pagination-sm inline">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="todo-list">
+                    <li>
+                        <!-- drag handle -->
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <!-- checkbox -->
+                        <input type="checkbox" value="" name="">
+                        <!-- todo text -->
+                        <span class="text">Complete Custom Data for Project X</span>
+                        <!-- Emphasis label -->
+                        <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                        <!-- General tools such as edit or delete-->
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <input type="checkbox" value="" name="">
+                        <span class="text">Generate Card Data for Osun</span>
+                        <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <input type="checkbox" value="" name="">
+                        <span class="text">Run AFIS</span>
+                        <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <input type="checkbox" value="" name="">
+                        <span class="text">Revoke Enrollment Licenses for Project Y</span>
+                        <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <input type="checkbox" value="" name="">
+                        <span class="text">Change Payment Gateway from Interswitch to ChamsSwitch</span>
+                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                        <input type="checkbox" value="" name="">
+                        <span class="text">Backup Central Database</span>
+                        <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
+                        <div class="tools">
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix no-border">
+                <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+            </div>
+        </div><!-- /.box -->
+
+    </section><!-- /.Left col -->
+</div>*@
+<!-- /.row (main row) -->
+</section><!-- /.content -->
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        window.baseUrl = baseUrl;
+        var totalCapture = 0;
+        var noFingerprint = 0;
+        var photoEnrolled = 0;
+        var signature = 0;
+        var noPhotos = 0;
+        var fingerprintsEnrolled = 0;
+        var page = 0;
+        var synchronized = 0;
+        var approved = 0;
+        var enrollmentOfficer = '';
+        var projectCode = '';
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                var isAuthenticated = $('#authTx').html();
+                console.log(isAuthenticated);
+                if (isAuthenticated !== undefined && isAuthenticated !== null && isAuthenticated.toLowerCase() === 'true') {
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        url: window.baseUrl + '/Home/GetDashboardStats',
+                        beforeSend: function () {
+                            window.showUiBusy();
+                        },
+                        success: function (response) {
+
+                            if (!response) {
+                                return;
+                            }
+
+                            $('#synchronized').html(response.Synchronized);
+                            $('#noFingerprint').html(response.NoFingerprint);
+                            $('#noPhotos').html(response.NoPhotos);
+                            $('#signature').html(response.Signature);
+                            $('#fingerprintsEnrolled').html(response.FingerprintsEnrolled);
+                            $('#photoEnrolled').html(response.PhotoEnrolled);
+                            $('#totalApprovals').html(response.TotalApprovals);
+                            $('#totalCapture').html(response.TotalCapture);
+
+                            totalCapture = response.TotalCapture;
+                            noFingerprint = response.NoFingerprint;
+                            photoEnrolled = response.PhotoEnrolled;
+                            signature = response.Signature;
+                            noPhotos = response.NoPhotos;
+                            approved = response.TotalApprovals;
+                            fingerprintsEnrolled = response.FingerprintsEnrolled;
+
+                            if (response.DataRetrieved === true) {
+                                enrollmentOfficer = response.EnrollmentOfficer;
+                                projectCode = response.ProjectCode;
+                                getMoreDashboardUpdate();
+                            }
+                            else {
+                                window.hideUiBusy();
+                            }
+                        }
+                    });
+                }
+            }, 300);
+
+        });
+
+        function getMoreDashboardUpdate() {
+            page = page + 1;
+
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: window.baseUrl + '/Home/GetMoreDashboardStats?page=' + page + '&numOfItemsToFetch=50&enrollmentOfficer=' + enrollmentOfficer + '&projectCode=' + projectCode,
+                beforeSend: function () {
+                    window.showUiBusy();
+                },
+                success: function (res) {
+                    if (!res) {
+                        return;
+                    }
+
+                    if (res.DataRetrieved === true && res.TotalCapture > 0) {
+                        totalCapture += res.TotalCapture;
+                        noFingerprint += res.NoFingerprint;
+                        photoEnrolled += res.PhotoEnrolled;
+                        signature += res.Signature;
+                        noPhotos += res.NoPhotos;
+                        approved += res.TotalApprovals;
+                        synchronized += res.Synchronized;
+                        fingerprintsEnrolled += res.FingerprintsEnrolled;
+
+                        $('#noFingerprint').html(noFingerprint);
+                        $('#noPhotos').html(noPhotos);
+                        $('#signature').html(signature);
+                        $('#fingerprintsEnrolled').html(fingerprintsEnrolled);
+                        $('#photoEnrolled').html(photoEnrolled);
+                        $('#totalCapture').html(totalCapture);
+                        $('#totalApprovals').html(approved);
+                        $('#synchronized').html(synchronized);
+                        getMoreDashboardUpdate();
+
+                    } else {
+                        window.hideUiBusy();
+                    }
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/dashboard.js")"></script>
+}

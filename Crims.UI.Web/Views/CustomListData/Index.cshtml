@@ -1,0 +1,81 @@
+﻿@using WebGrease.Css.Extensions
+
+@{
+    ViewBag.Title = "Custom List Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="row">
+        <div class="col-md-2">
+            <h4>Custom List Data </h4>
+        </div>
+        <div class="col-md-4">
+            <label style="margin-left: 20px; width: 20px"><a href="@Url.Action("DownloadContentFromFolder", "LicenseGenerator", new {path = "~/BulkTemplates/customListDataBulkTemplate.xlsx"})" style="float: right; text-align: right" title="Download Bulk upload Template"><img style="width: 40px; height: 35px; margin-top: 10%" src="@Url.Content("~/images/downloadExcel.png")"></a></label>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div  class="box box-info">
+        <div class="box-body">
+            <input type="hidden" id="tableId"/>
+            <div class="col-md-6">
+                <div class="col-md-12" style="margin-bottom: 10px">
+                    <label>
+                        Custom List
+                    </label>
+                    <select class="form-control" id="CustomListId" onchange="getListData()">
+                        <option value="0">-- Select option --</option>
+                    </select>
+                </div>
+                <div class="col-md-12" id="ParentNode" style="margin-bottom: 10px">
+                    <label>
+                        Parent Custom List Data( Parent Node)
+                    </label>
+                    <select class="form-control" id="ParentNodeId">
+                        <option value="0">-- Select option --</option>
+                    </select>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 10px">
+                    <label>
+                        Custom List Data
+                    </label>
+                    <input class="form-control" id="ListDataName"/>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" id="btnAddData" class="btn btn-primary" onclick="addCustomListData()">Add List Data</button> &nbsp;&nbsp; OR Press 'Enter' to Add List Data
+                </div>
+                <br/>
+                <hr />
+                <br/>
+                <div class="col-md-12">
+                    <label class="control-label ">Pick Excel File to upload Bulk Custom List Data *</label>
+                    <input type="file" class="form-control" name="file" onchange="bulkDataUpload(this.files[0])" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                </div>
+            </div>
+            <div class="col-md-6" style="border-left: 1px solid #ddd">
+                <label>
+                    Custom List Data
+                </label>
+                <span style="margin-bottom: 10px">
+                    <select multiple id="CustomListDataId" data-title="Custom List Data" class="selected form-control" name="CustomListDataId" style="height: 202px; overflow-y: scroll;"></select>
+                </span>
+                <br/>
+                <span>
+                    <button type="button" class="btn btn-default pull-left" onclick="deleteSelected()">Delete Selected Data</button>
+                    <button type="button" class="btn btn-primary pull-right" onclick="processCustomListData()">Save Custom List Data</button>
+                </span>
+                <br /><br /><br />
+                <span class="col-md-12">* Press down the 'Ctrl' key to select multiple Items</span>
+                <br />
+                <span class="col-md-12" style="margin-top: 2px">* Double-click an Item to Edit it</span>
+            </div>
+        </div>
+        <br/><br/>
+    </div>
+</section>
+ 
+@section JavaScript
+{
+    <script src="~/Scripts/projectScripts/customListDataScript.js"></script>
+}

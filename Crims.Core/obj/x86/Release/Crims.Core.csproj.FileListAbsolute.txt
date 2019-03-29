@@ -1,0 +1,9 @@
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Crims.Core.dll.config
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Crims.Core.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Crims.Core.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Microsoft.ReportViewer.WinForms.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\obj\x86\Release\Crims.Core.dll
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\obj\x86\Release\Crims.Core.pdb
+C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\Crims\Crims.Core\obj\x86\Release\Crims.Core.csprojResolveAssemblyReference.cache

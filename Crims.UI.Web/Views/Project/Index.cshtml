@@ -1,0 +1,1464 @@
+﻿@model IEnumerable<Crims.Data.Models.Project>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" id="projectList">
+    <section class="content-header">
+        <h1>Manage Crims Project Sites</h1>
+        <hr />
+        <p>
+          <a data-target='#add_modal' role="button" class="btn btn-primary  btn_add" data-toggle="modal">
+                <i class="fa fa-file 2x"></i> New Project Site
+            </a>
+        </p>
+    </section>
+    <section class="content">
+        <table class="table display" id="TableList">
+            <thead>
+                <tr>
+                    <th>Name </th>
+                    <th>Description </th>
+                    <th>Code </th>
+                    <th>Created</th>
+                    <th>Expiry</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCreated)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LicenseExpiryDate)
+                        </td>
+                        <td>
+                            <a title="Edit" role='button' data-edit-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default editBtn'><i class='fa fa-edit'></i></a>
+                            @*<a data-target='#delete_modal' role='button' data-delete-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default deleteBtn' data-toggle='modal'><i class='fa fa-trash-o'></i></a>*@
+                         </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</div>
+<!--Details-->
+<div class="modal fade" id="details_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="details_modal_body">
+        </div>
+    </div>
+</div>
+
+<!--Add-->
+<div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="add_modal_body">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="group_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="group_modal_body">
+        </div>
+    </div>
+</div>
+<!--Edit-->
+<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="edit_modal_body">
+        </div>
+    </div>
+</div>
+<!--Delete-->
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="delete_modal_body">
+        </div>
+    </div>
+</div>
+
+<section class="content ngdialog-content" id="projectCustomItems" style="display: none">
+    <div class="col-md-12 box-body">
+        <div class="box-header with-border">
+            <button type="button" class="close" onclick="goBack()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Update Project Site</h4>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="row">
+            <div class="box-body">
+                <div class="col-md-7">
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Project Name</label>
+                        <input type="text" class="form-control" name="eProjectName" id="eProjectName"/>
+                    </div>
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Project Code</label>
+                        <input type="text" class="form-control" name="eProjectCode" id="eProjectCode"/>
+                    </div>
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Expiry Date</label>
+                        <input type="text" value="" name="eLicenseExpiryDate" id="eLicenseExpiryDate" data-val-required="The License Expiry Date field is required." data-val-date="The field License Expiry Date must be a date." data-val="true" class="form-control text-box single-line">
+                    </div>
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Licence Code</label>
+                        <div style="padding-left: 0px; padding-right: 0px">
+                            <div class="col-md-8" style="padding-left: 0px">
+                                <input value="" name="eLicenceCode" id="eLicenceCode" class="form-control" readonly="readonly" disabled="disabled" type="text">
+                            </div>
+                            <div class="col-md-4" style="padding-left: 1px; padding-right: 0px">
+                                <button type="button" class="btn btn-default" onclick="generateProjectLicense()">Generate License Code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Description</label>
+                        <textarea id="eProjectDescription" placeholder="Project Description" class="form-control" style="height: 173px"></textarea>
+                    </div>
+                    <div class="col-md-12 px_10_bottom">
+                        <label>Activation Code</label>
+                        <input type="text" value="" name="eActivationCode" id="eActivationCode" placeholder="Activation Code" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4" style="padding-left: 1px">
+                <button type="button" onclick="deactivateProject()" class="btn btn-default">Deactivate Project</button>
+            </div>
+            <div class="col-md-4">
+                <a id="dnLink" href="#" style="display: none"></a>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary pull-right" onclick="updateProject()">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr/>
+    </div>
+    <br/>
+    <div class="col-md-12 box-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs projectTabs" role="tablist">
+            <li role="presentation" class="active"><a href="#customGroups" role="tab" data-toggle="tab">Project Custom Groups</a></li>
+            <li role="presentation"><a href="#customFields" role="tab" data-toggle="tab">Custom Fields</a></li>
+            @*<li role="presentation"><a href="#customLists" aria-controls="customLists" role="tab" data-toggle="tab">Custom Lists</a></li>
+            <li role="presentation"><a href="#customListData" aria-controls="customListData" role="tab" data-toggle="tab">Custom List Data</a></li>*@
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="customGroups" style="margin-top: 30px">
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin-bottom: 15px">
+                        <label>
+                            Select Custom Group
+                        </label>
+                        <select class="form-control" id="eCustomGroupId">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            Tab Index
+                        </label>
+                        <input type="number" class="form-control" id="CustomGroupTabIndex"/>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" style="margin-top: 23px" id="btnAddProjectCustomGroup" class="btn btn-primary btn_add pull-left" onclick="addCustomGroup()">Add List Data</button>
+                        <a href="@Url.Action("Index", "CustomGroup")" type="button" style="margin-top: 23px" id="btnAddCustomGroup" class="btn btn-default btn_add pull-right">New...</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-10">
+                        <span>
+                            <select multiple id="projectCustomGroupId" class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <span>
+                            Press down the 'Ctrl' key to select multiple Items
+                        </span>
+                        <br /><br />
+                        <span>
+                            <button class="btn btn-default pull-left" type="button" style="" onclick="deleteCustomGroups()">Delete Custom Group(s)</button>
+                            <button type="button" style="" onclick="saveProjectCustomGroups()" class="btn btn-primary pull-right">Save Project Custom Group(s)</button>
+                        </span>
+
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/><br />
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="customFields" style="margin-top: 30px">
+                <div class="row">
+                   <div class="col-md-6">
+                        <label>
+                            Project Custom Group
+                        </label>
+                        <select class="form-control" id="pCustomGroupId" onchange="getCustomFields($(this))">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                </div>
+              <br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>
+                            <label>
+                                Custom Field
+                            </label>
+                            <select id="eCustomFieldId" multiple="multiple" class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <br/>
+                        <span>
+                            <a href="@Url.Action("Index", "CustomField")" type="button" id="btnAddCustomField" class="btn btn-default btn_add pull-left">New...</a>
+                            <button type="button" onclick="addCustomFields()" class="btn btn-default pull-right">Add Custom Field(s)</button>
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <span>
+                            <label>
+                                Project Custom Field
+                            </label>
+                            <select id="projectCustomFieldId" multiple class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <br/>
+                        <span>
+                            <button type="button" class="btn btn-default pull-right" onclick="removeCustomFields()">Remove Item(s)</button>
+                         </span>
+                    </div>
+                </div>
+                <br/><br /><br />
+                <div class="row">
+                    <div class="col-md-7">
+                        <span>
+                           <button type="button" onclick="processCustomFields()" class="btn btn-primary pull-right">Save Project Custom Field(s)</button>
+                        </span>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="customLists" style="margin-top: 30px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>
+                            Select Custom List
+                        </label>
+                        <span>
+                            <select multiple id="eCustomListId" class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <span>
+                            Press down the 'Ctrl' key to select multiple Items
+                        </span>
+                        <br/><br/>
+                        <span>
+                            <a href="@Url.Action("Index", "CustomList")" type="button" id="btnAddCustomList" class="btn btn-default btn_add pull-left">New...</a>
+                           <button type="button" style="" onclick="addCustomLists()" class="btn btn-default pull-right">Add Custom List(s)</button>
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <label>
+                            Project Custom List
+                        </label>
+                        <span>
+                            <select multiple id="projectCustomListId" class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <span>
+                            Press down the 'Ctrl' key to select multiple Items
+                        </span>
+                        <br/><br/>
+                        <span>
+                            <button class="btn btn-default pull-right" type="button" style="" onclick="deleteCustomLists()">Delete Custom List(s)</button>
+                        </span>
+                    </div>
+                </div>
+                <br/><br/>
+                <div>
+                    <div class="col-md-7">
+                        <button type="button" style="" onclick="saveProjectCustomLists()" class="btn btn-primary pull-right">Save Project Custom List(s)</button>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br /><br />
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="customListData" style="margin-top: 30px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>
+                            Project Custom List
+                        </label>
+                        <select class="form-control" id="pCustomListId" onchange="getCustomListDatas()">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div> 
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>
+                            <label>
+                                Custom List Data
+                            </label>
+                            <select id="eCustomListDataId" multiple class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <br />
+                        <span>
+                            <a href="@Url.Action("Index", "CustomListData")" type="button" id="btnAddCustomListData" class="btn btn-default btn_add pull-left">New...</a>
+                            <button type="button" onclick="addCustomListDatas()" class="btn btn-default pull-right">Add Custom List Data</button>
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <span>
+                            <label>
+                                Project Custom List Data
+                            </label>
+                            <select id="projectCustomListDataId" multiple class="selected form-control" style="height: 202px;"></select>
+                        </span>
+                        <br />
+                        <span>
+                            <button type="button" class="btn btn-default pull-right" onclick="removeCustomListDatas()">Remove Item(s)</button>
+                        </span>
+                    </div>
+                </div>
+                <br /><br /><br />
+                <div class="row">
+                    <div class="col-md-7">
+                        <span>
+                            <button type="button" onclick="processCustomListDatas()" class="btn btn-primary pull-right">Save Project Custom List Data</button>
+                        </span>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+    <br />
+</section>
+<br/><br /><br />
+@section JavaScript
+{
+    <script type="text/javascript">
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        window.customGroups = [];
+        window.projectCustomGroups = [];
+        window.customFieldList = [];
+        window.projectCustomFields = [];
+        window.customList = [];
+        window.projectCustomLists = [];
+        window.projectCustomListDatas = [];
+        var existingProjectCount = 0;
+        $.ajax({
+            url: baseUrl + '/Project/GetProjectCount',
+            contentType: "application/json",
+            dataType: 'json',
+            type: 'GET',
+            beforeSend: function () { $('.showBusy').fadeIn(); },
+            success: function (response)
+            {
+                $('.showBusy').fadeOut();
+                if (response.TableId < 1)
+                {
+                    alert('Project information could not be retrieved. Please try again or contact Support team');
+                    return;
+                }
+
+                existingProjectCount = response + 1;
+            }
+        });
+       
+        function initControls()
+        {
+            $('#eCustomFieldId').html('');
+            $('#eCustomListId').html('<option value="0">-- Select option --</option>');
+            $("#prodjectCustomListDatas").html('');
+            $("#projectCustomLists").html('');
+            $("#prodjectCustomFields").html('');
+
+            window.projectScope = {
+                TableId: 0,
+                ProjectName: '',
+                ProjectDescription: '',
+                ProjectCode: '',
+                LicenseExpiryDate: '',
+                DateCreated: ''
+            };
+
+            getCustomGroups();
+        }
+
+        $(function ()
+        {
+            initControls();
+            //Load the details page
+            $(".detailsBtn")
+                .click(function ()
+                {
+                    $("#details_modal_body").load(baseUrl + "/Project/ProjectDetails/" + $(this).data("details-id"));
+                });
+
+            //Load the add page
+            $(".btn_add")
+                .click(function() {
+                    $("#add_modal_body")
+                        .load(baseUrl + "/Project/CreateProject",
+                            function ()
+                            {
+                                $(function ()
+                                {
+                                    $('#LicenseExpiryDate')
+                                        .datetimepicker({
+                                            format: 'd/m/Y',
+                                            minDate: new Date(),
+                                            timepicker: false,
+                                            onSelectDate: function (dp, $input)
+                                            {
+                                                window.projectScope.LicenseExpiryDate = dp;
+                                            }
+                                        });
+                                });
+
+                            });
+                });
+
+            //Load the edit page
+            $(".editBtn")
+                .click(function ()
+                {
+                    var itemId = $(this).data("edit-id");
+                    if (itemId < 1) {
+                        alert('Invalid selection');
+                        return;
+                    }
+
+                    $('#dnLink').removeClass('btn btn-default').css('display', 'none').attr('href', '').html('');
+
+                    $.ajax({
+                        url: baseUrl + '/Project/GetProject?id=' + itemId,
+                        contentType: "application/json",
+                        dataType: 'json',
+                        type: 'GET',
+                        beforeSend: function() { $('.showBusy').fadeIn(); },
+                        success: function (response)
+                        {
+                            $('.showBusy').fadeOut();
+                            if (!response || response.TableId < 1)
+                            {
+                                alert('Project information could not be retrieved. Please try again or contact Support team');
+                                return;
+                            }
+
+                            initControls();
+
+                            window.projectScope = response;
+                            getProjectCustomGroups();
+
+                            var dateVar = moment(response.LicenseExpiryDate).format("DD/MM/YYYY");
+                            response.DateCreated = moment(response.DateCreated);
+                            $("#eProjectName").val(response.ProjectName);
+                            $("#eProjectDescription").val(response.ProjectDescription);
+                            $("#eProjectDescription").val(response.ProjectDescription);
+                            $("#eLicenceCode").val(response.LicenceCode);
+                            $("#eActivationCode").val(response.ActivationCode);
+                            $("#eProjectCode").val(response.ProjectCode);
+                            $("#eLicenseExpiryDate").datetimepicker({format: 'd/m/Y', minDate: new Date(),timepicker: false,
+                                onSelectDate: function (dp, $input)
+                                {
+                                    window.projectScope.LicenseExpiryDate = dp;
+                                }
+                            }).val(dateVar);
+
+
+                            $("#tableId").val(response.TableId);
+                            $('#projectList').hide();
+
+                            //determineSelectedItems(response);
+                            $('#projectCustomItems').fadeIn();
+                        }
+                    });
+
+                });
+
+        });
+
+        //___________________________ PROJECT CUSTOM GROUPS _______________________________
+
+        function addCustomGroup()
+        {
+            var selected = $('#eCustomGroupId option:selected');
+            var tabIndex = $('#CustomGroupTabIndex').val();
+
+            var existingPcgroups = window.projectCustomGroups.filter(function (c)
+            {
+                return c.CustomGroupId === selected.val();
+            });
+
+            if (existingPcgroups.length > 0)
+            {
+                alert('Custom Group is already added to this Project');
+                selected.val('0');
+                $('#CustomGroupTabIndex').val('');
+                return;
+            }
+
+            if (!tabIndex || parseFloat(tabIndex) < 1)
+            {
+                alert('Please provide Custom Group Tab Index');
+                return;
+            }
+
+            var sr = '<option data-table-id="0" data-tab-index="' + tabIndex + '" value="' + selected.val() + '">' + selected.text() + '</option>';
+            $('#projectCustomGroupId').append(sr);
+
+            window.projectCustomGroups.push({
+                TableId: 0,
+                CustomGroupId: selected.val(),
+                ProjectCode: window.projectScope.ProjectCode,
+                TabIndex: tabIndex,
+                GroupName: selected.text()
+            });
+
+            $('#CustomGroupTabIndex').val('');
+            $('#eCustomGroupId').val('0');
+        }
+
+        function deleteCustomGroups()
+        {
+            var projectCustomGroupTableIds = [];
+            var customGroups = [];
+
+            $('#projectCustomGroupId option:selected').each(function ()
+            {
+                var tableId = $(this).data('table-id');
+                if (tableId && tableId !== "0" && parseFloat(tableId) > 0)
+                {
+                    projectCustomGroupTableIds.push(tableId);
+                }
+                customGroups.push($(this).val());
+            });
+
+            if (customGroups.length < 1)
+            {
+                alert('Requested operation could not be completed. Please try again later');
+                return;
+            }
+
+            //if the Project Custom Group TableIds is empty => all are newly added items
+            if (projectCustomGroupTableIds.length < 1)
+            {
+                $('#projectCustomGroupId option:selected').remove();
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomGroup/DeleteProjectCustomGroupList',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomGroupTableIds: projectCustomGroupTableIds }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    $('#projectCustomGroupId option:selected').remove();
+                }
+            });
+
+        }
+
+        function getCustomGroups()
+        {
+            $.ajax({
+                url: baseUrl + '/CustomGroup/GetCustomGroups',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    getSelectables();
+                    if (response != null && response.length > 0) {
+                        $('#eCustomGroupId').html('');
+                        window.customGroups = response;
+                        var sr = '<option value="0">-- Select option --</option>';
+                        window.customGroups.forEach(function (g, i)
+                        {
+                            sr += '<option value="' + g.CustomGroupId + '">' + g.GroupName + '</option>';
+                        });
+
+                        $('#eCustomGroupId').html(sr).val('0');
+
+                    }
+                }
+            });
+
+        }
+
+        function getProjectCustomGroups()
+        {
+            $.ajax({
+                url: baseUrl + '/ProjectCustomGroup/GetProjectCustomGroups?projectCode=' + window.projectScope.ProjectCode,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    //Get Project Custom Fields
+                    getProjectCustomFields();
+                    $('#projectCustomGroupId').html('');
+                    $('#pCustomGroupId').html('');
+
+                    if (response != null && response.length > 0)
+                    {
+                        window.projectCustomGroups = response;
+                        var sr = '';
+                        window.projectCustomGroups.forEach(function (g, i)
+                        {
+                            sr += '<option data-table-id="' + g.TableId + '" data-tab-index="' + g.TabIndex + '" value="' + g.CustomGroupId + '">' + g.CustomGroupName + '</option>';
+                        });
+
+                        $('#projectCustomGroupId').html(sr);
+                        $('#pCustomGroupId').html('<option data-table-id="0" data-tab-index="0" value="0">-- Select option --</option>' + sr);
+                    }
+
+                    $('#CustomGroupTabIndex').val('');
+                }
+            });
+
+        }
+
+        function saveProjectCustomGroups()
+        {
+            var pcgList = [];
+            $('#projectCustomGroupId option').each(function (i, o)
+            {
+                if ($(this).val() !== "0") {
+                    var tt =
+                    {
+                        TableId: $(this).data('table-id'),
+                        CustomGroupId: $(this).val(),
+                        ProjectCode: window.projectScope.ProjectCode,
+                        TabIndex: $(this).data("tab-index")
+                    };
+
+                    pcgList.push(tt);
+                }
+
+            });
+
+            if (pcgList.length < 1)
+            {
+                alert('An unknown error was encountered. Please try again later');
+                return;
+            }
+            console.log(pcgList);
+            $.ajax({
+                url: baseUrl + '/ProjectCustomGroup/ProcessProjectCustomGroups',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomGroups: pcgList}),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    getProjectCustomGroups();
+
+                }
+            });
+        }
+        //______________________________________ PROJECT CUSTOM FIELDS ____________________________________________
+
+        function getCustomFields(selectedOption)
+        {
+            var selected = selectedOption.val();
+            if (!selected || selected === "0" || selected.length < 1)
+            {
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/CustomField/GetCustomFields?projectCustomGroupId=' + selected,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    $('#eCustomFieldId').html('');
+                    if (response != null && response.length > 0)
+                    {
+                        window.customFieldList = response;
+                        var sr = '';
+                        window.customFieldList.forEach(function (f, i)
+                        {
+                            sr += '<option data-table-id="'+ f.TableId +'" value="' + f.CustomFieldId + '">' + f.CustomFieldName + '</option>';
+                        });
+
+                        $('#eCustomFieldId').html(sr);
+                    }
+                }
+            });
+        }
+
+        function addCustomFields()
+        {
+            var sr = '';
+
+            $('#eCustomFieldId option:selected').each(function (i, f)
+            {
+                if ($(f).val() && $(f).val() !== "0")
+                {
+                    var existingPcFields = window.projectCustomFields.filter(function (c)
+                    {
+                        return c.CustomFieldId === $(f).val();
+                    });
+
+                    if (existingPcFields.length > 0)
+                    {
+                        return;
+                    }
+
+                    window.projectCustomFields.push({
+                        TableId: 0,
+                        CustomFieldId: $(f).val(),
+                        CustomFieldName: $(f).text(),
+                        ProjectCode: window.projectScope.ProjectCode
+                    });
+
+                    sr += '<option data-table-id="0" value="' + $(f).val() + '">' + $(f).text() + '</option>';
+                }
+            });
+
+            if (sr && sr.length > 0)
+            {
+                $('#projectCustomFieldId').append(sr);
+            }
+        }
+
+        function processCustomFields()
+        {
+            var projectCustomFields = [];
+
+            $('#projectCustomFieldId option').each(function (i, o)
+            {
+                if ($(o).val() && $(o).val() !== "0")
+                {
+                    projectCustomFields.push({
+                        TableId: $(o).data("table-id"),
+                        CustomFieldId: $(o).val(),
+                        CustomFieldName: $(o).text(),
+                        ProjectCode: window.projectScope.ProjectCode
+                    });
+                }
+
+            });
+
+            if (projectCustomFields.length < 1)
+            {
+                alert('An unknown error was encountered. Please try again later');
+                return;
+            }
+
+            $('.showBusy').fadeIn();
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomField/ProcessProjectCustomFields',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomFields: projectCustomFields }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    getProjectCustomFields();
+                }
+            });
+
+        }
+
+        function removeCustomFields()
+        {
+            var projectCustomFieldTableIds = [];
+            var customFields = [];
+
+            $('#projectCustomFieldId option:selected').each(function ()
+            {
+                var tableId = $(this).data('table-id');
+                if (tableId && tableId !== "0" && parseFloat(tableId) > 0)
+                {
+                    projectCustomFieldTableIds.push(tableId);
+                }
+                customFields.push($(this).val());
+            });
+
+            if (customFields.length < 1)
+            {
+                alert('Requested operation could not be completed. Please try again later');
+                return;
+            }
+
+            //if the Project Custom Group TableIds is empty => all are newly added items
+            if (projectCustomFieldTableIds.length < 1)
+            {
+                $('#projectCustomFieldId option:selected').remove();
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomField/DeleteProjectCustomFields',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomFieldTableIds: projectCustomFieldTableIds }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    $('#projectCustomFieldId option:selected').remove();
+                }
+            });
+        }
+
+        function getProjectCustomFields()
+        {
+            $.ajax({
+                url: baseUrl + '/ProjectCustomField/GetProjectCustomFields?projectCode=' + window.projectScope.ProjectCode,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response) {
+
+                    //Get Project Custom Lists
+                    getProjectCustomLists();
+
+                    $('#projectCustomFieldId').html('');
+                    if (response != null && response.length > 0)
+                    {
+                        window.projectCustomFields = response;
+                        var sr = '';
+                        window.projectCustomFields.forEach(function (g, i)
+                        {
+                            sr += '<option data-table-id="' + g.TableId + '" value="' + g.CustomFieldId + '">' + g.CustomFieldName + '</option>';
+                        });
+
+                        $('#projectCustomFieldId').html(sr);
+                    }
+                }
+            });
+        }
+
+        //________________________________________ PROJECT CUSTOM LIST __________________________________________
+
+        function addCustomLists()
+        {
+            var sr = '';
+            $('#eCustomListId option:selected').each(function (i, o)
+            {
+                var tx = $(o);
+                if ( tx !== "0")
+                {
+                    var existingPclists = window.projectCustomLists.filter(function (c)
+                    {
+                        return c.CustomListId === tx.val();
+                    });
+
+                    if (existingPclists.length > 0)
+                    {
+                        return;
+                    }
+
+                    var tt =
+                    {
+                        TableId: 0,
+                        CustomListId: tx.val(),
+                        ProjectCode: window.projectScope.ProjectCode,
+                        CustomListName: tx.text()
+                    };
+
+                    window.projectCustomLists.push(tt);
+
+                    sr += '<option data-table-id="0" value="' + tx.val() + '">' + tx.text() + '</option>';
+
+                }
+            });
+
+            if (sr.length > 0)
+            {
+                $('#projectCustomListId').append(sr);
+            }
+        }
+
+        function deleteCustomLists()
+        {
+            var projectCustomListTableIds = [];
+            var customLists = [];
+
+            $('#projectCustomListId option:selected').each(function (i, o)
+            {
+                var tableId = $(o).data('table-id');
+                if (tableId && tableId !== "0" && parseFloat(tableId) > 0)
+                {
+                    projectCustomListTableIds.push(tableId);
+                }
+                customLists.push($(o).val());
+            });
+
+            if (customLists.length < 1)
+            {
+                alert('Requested operation could not be completed. Please try again later');
+                return;
+            }
+
+            //if the Project Custom List TableIds is empty => all are newly added items
+            if (projectCustomListTableIds.length < 1) {
+                $('#projectCustomListId option:selected').remove();
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomList/DeleteProjectCustomLists',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomListTableIds: projectCustomListTableIds }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1) {
+                        return;
+                    }
+
+                    $('#projectCustomListId option:selected').remove();
+                }
+            });
+
+        }
+
+        function getProjectCustomLists()
+        {
+            $.ajax({
+                url: baseUrl + '/ProjectCustomList/GetProjectCustomLists?projectCode=' + window.projectScope.ProjectCode,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    //Get Project Custom List data
+                    getProjectCustomListDatas();
+
+                    $('#projectCustomListId').html('');
+                    $('#pCustomListId').html('');
+
+                    if (response != null && response.length > 0)
+                    {
+                        window.projectCustomLists = response;
+
+                        var sr = '';
+                        window.projectCustomLists.forEach(function (g, i)
+                        {
+                            sr += '<option data-table-id="' + g.TableId + '" value="' + g.CustomListId + '">' + g.CustomListName + '</option>';
+                        });
+                        if (sr.length > 0)
+                        {
+                            $('#pCustomListId').html('<option value="0">-- Select option --</option>' + sr);
+                            $('#projectCustomListId').html(sr);
+                        }
+
+                    }
+
+                }
+            });
+
+        }
+
+        function saveProjectCustomLists()
+        {
+            var pclList = [];
+            $('#projectCustomListId option').each(function (i, o)
+            {
+                if ($(this).val() !== "0")
+                {
+                    var tt =
+                    {
+                        TableId: $(o).data('table-id'),
+                        CustomListId: $(o).val(),
+                        ProjectCode: window.projectScope.ProjectCode
+                    };
+
+                    pclList.push(tt);
+                }
+
+            });
+
+            if (pclList.length < 1) {
+                alert('An unknown error was encountered. Please try again later');
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomList/ProcessProjectCustomLists',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomLists: pclList }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    getProjectCustomLists();
+
+                }
+            });
+        }
+
+        //__________________________________________ PROJECT CUSTOM LIST DATA ____________________________________________________________
+
+        function addCustomListDatas() {
+            var sr = '';
+            $('#eCustomListDataId option:selected').each(function (i, o) {
+                var tx = $(o);
+                if (tx !== "0") {
+                    var existingPclistDatas = window.projectCustomListDatas.filter(function (c) {
+                        return c.CustomListDataId === tx.val();
+                    });
+
+                    if (existingPclistDatas.length > 0) {
+                        return;
+                    }
+
+                    var tt =
+                    {
+                        TableId: 0,
+                        CustomListDataId: tx.val(),
+                        ProjectCode: window.projectScope.ProjectCode,
+                        ListDataName: tx.text()
+                    };
+
+                    window.projectCustomLists.push(tt);
+
+                    sr += '<option data-table-id="0" value="' + tx.val() + '">' + tx.text() + '</option>';
+
+                }
+            });
+
+            if (sr.length > 0) {
+                $('#projectCustomListDataId').append(sr);
+            }
+        }
+
+        function getProjectCustomListDatas()
+        {
+            $.ajax({
+                url: baseUrl + '/ProjectCustomListData/GetProjectCustomListDatas?projectCode=' + window.projectScope.ProjectCode,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    $('#projectCustomListDataId').html('');
+
+                    if (response != null && response.length > 0)
+                    {
+                        window.projectCustomListDatas = response;
+
+                        var sr = '';
+                        window.projectCustomListDatas.forEach(function (g, i) {
+                            sr += '<option data-table-id="' + g.TableId + '" value="' + g.CustomListDataId + '">' + g.CustomListDataName + '</option>';
+                        });
+                        if (sr.length > 0)
+                        {
+                            $('#projectCustomListDataId').html(sr);
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+        function getCustomListDatas()
+        {
+            var selected = $('#pCustomListId').val();
+            if (!selected || selected === '0' || selected.length < 1)
+            {
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/CustomListData/GetCustomListDatas?projectCustomListId=' + selected,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    $('#eCustomListDataId').html('');
+
+                    if (response != null && response.length > 0)
+                    {
+                        var sr = '';
+                        response.forEach(function (g, i)
+                        {
+                            sr += '<option data-table-id="' + g.TableId + '" data-custom-list-id="' + g.CustomListId + '" value="' + g.CustomListDataId + '">' + g.ListDataName + '</option>';
+                        });
+
+                        if (sr.length > 0)
+                        {
+                            $('#eCustomListDataId').html(sr);
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+        function removeCustomListDatas()
+        {
+            var projectCustomListDataTableIds = [];
+            var customListDatas = [];
+
+            $('#projectCustomListDataId option:selected').each(function (i, o)
+            {
+                var tableId = $(o).data('table-id');
+                if (tableId && tableId !== "0" && parseFloat(tableId) > 0)
+                {
+                    projectCustomListDataTableIds.push(tableId);
+                }
+                customListDatas.push($(o).val());
+            });
+
+            if (customListDatas.length < 1) {
+                alert('Requested operation could not be completed. Please try again later');
+                return;
+            }
+
+            //if the Project Custom ListData TableIds is empty => all are newly added items
+            if (projectCustomListDataTableIds.length < 1) {
+                $('#projectCustomListDataId option:selected').remove();
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomListData/DeleteProjectCustomListDatas',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({projectCustomListDataTableIds: projectCustomListDataTableIds }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    $('#projectCustomListDataId option:selected').remove();
+                }
+            });
+        }
+
+        function processCustomListDatas()
+        {
+            var pcldList = [];
+            $('#projectCustomListDataId option').each(function (i, o)
+            {
+                var tx = $(o);
+                if (tx.val() !== "0") {
+                    var tt =
+                    {
+                        TableId: tx.data('table-id'),
+                        CustomListDataId: tx.val(),
+                        ProjectCode: window.projectScope.ProjectCode
+                    };
+
+                    pcldList.push(tt);
+                }
+
+            });
+
+            if (pcldList.length < 1)
+            {
+                alert('An unknown error was encountered. Please try again later');
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomListData/ProcessProjectCustomListData',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ projectCustomListData: pcldList }),
+                type: 'POST',
+                beforeSend: function () { $('.showBusy').fadeIn(); },
+                success: function (response) {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1) {
+                        return;
+                    }
+                    getProjectCustomListDatas();
+
+                }
+            });
+        }
+        //_________________________________________________________________________________________________________________________________
+
+        function createProject()
+        {
+            window.projectScope.ProjectName = $("#ProjectName").val();
+            window.projectScope.ProjectDescription = $("#ProjectDescription").val();
+            window.projectScope.ProjectCode = $("#ProjectCode").val();
+            $('.showBusy').fadeIn();
+
+            $.ajax({
+                url: baseUrl + '/Project/CreateProject',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ project: window.projectScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+        function generateProjectCode(val)
+        {
+            if (val === undefined || val === null || val.length < 1)
+            {
+                return;
+            }
+            var proCodePrefix = '';
+            var proCode = '';
+            var zerosPrefix = 4;
+            var prefixes = val.split(' ');
+            if (prefixes.length > 1)
+            {
+                proCodePrefix = prefixes[0].charAt(0);
+
+                if (prefixes[0].length > 1)
+                {
+                    proCodePrefix += prefixes[0].charAt(1);
+                }
+                if (prefixes[1].length > 0)
+                {
+                    proCodePrefix += prefixes[1].charAt(0);
+                }
+
+                if (prefixes[1].length > 0)
+                {
+                    proCodePrefix += prefixes[1].charAt(1);
+                }
+            }
+            else
+            {
+                proCodePrefix = prefixes[0];
+            }
+
+            var pcvIdLenght = existingProjectCount.toString().length;
+
+            if (pcvIdLenght < zerosPrefix) {
+                var zeroLenght = "";
+
+                for (var i = pcvIdLenght; i < zerosPrefix; i++) {
+                    zeroLenght += "0";
+                }
+
+                proCode = proCodePrefix + zeroLenght + existingProjectCount;
+            }
+            else
+            {
+                if (existingProjectCount >= zerosPrefix)
+                {
+                    proCode = proCodePrefix + existingProjectCount;
+
+                }
+            }
+            
+
+            $("#ProjectCode").val(proCode);
+        }
+        function updateProject()
+        {
+            window.projectScope.ProjectName = $("#eProjectName").val();
+            window.projectScope.ProjectDescription = $("#eProjectDescription").val();
+            window.projectScope.ProjectCode = $("#eProjectCode").val();
+            window.projectScope.ActivationCode = $("#eProjectCode").val();
+            window.projectScope.LicenceCode = $("#eLicenceCode").val();
+
+            $('.showBusy').fadeIn();
+            $.ajax({
+                url: baseUrl + '/Project/EditProject',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ project: window.projectScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+                    location.reload();
+                }
+            });
+        }
+        function getSelectables()
+        {
+            $.ajax({
+                url: baseUrl + '/Project/GetCustomLists',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    if (response && response.length > 0)
+                    {
+                        window.customList = response;
+
+                        $('#eCustomListId').html('');
+
+                        var sr = '';
+                        window.customList.forEach(function (g, i) {
+                            sr += '<option data-tab-index="'+ g.TabIndex +'" value="' + g.CustomListId + '">' + g.CustomListName + '</option>';
+                        });
+
+                        $('#eCustomListId').html(sr).val('0');
+                    }
+                }
+            });
+        }
+        function deactivateProject()
+        {
+            //Deactivate Project
+        }
+        //Generate Project License
+        function generateProjectLicense()
+        {
+            $.ajax({
+                url: baseUrl + '/LicenseGenerator/GenerateLicense?projectCode=' + window.projectScope.ProjectCode,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response)
+                {
+                    alert(response.Message);
+                    if (response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    $('#dnLink').css('display', 'block').attr('href', baseUrl + '/LicenseGenerator/DownloadContentFromFolder?path=' + response.DownloadLink).addClass('btn btn-default').html('Download License');
+
+                }
+            });
+        }
+        function goBack()
+        {
+            $('#projectCustomItems').hide();
+            $('#projectList').fadeIn();
+        }
+
+        $('#projectTabs a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        $("#CustomGroupTabIndex").keypress(function (event)
+        {
+            if (event.keyCode === 13)
+            {
+                event.preventDefault();
+                $("#btnAddProjectCustomGroup").trigger('click');
+            }
+        });
+
+        $("#eCustomGroupId").on('change', function () {
+            var dd = $("#eCustomGroupId");
+            if (dd.val() === '0' || dd.val().length < 1) {
+                return;
+            }
+            var index = dd.data('index');
+            $("#CustomGroupTabIndex").val(index);
+
+        });
+
+    </script>
+}
+

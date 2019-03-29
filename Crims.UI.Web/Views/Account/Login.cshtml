@@ -1,0 +1,191 @@
+﻿@using Crims.UI.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Gen_Layout.cshtml";
+}
+
+<section class="row content" id="signInSection" style="margin-top: 60px; margin-bottom: 50px">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 box box-info" style="width: 33.3333%;">
+            <div class="row modal-header" style="margin-bottom: 15px">
+                <div class="row" style="text-align: center">
+                    <div class="col-md-12 no-padding">
+                        <h4 class="access-header" style="font-weight: bold">
+                            Sign In
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="email" placeholder="Email *" class="form-control" id="email" style="padding-right: 42.5px; font-size: 18px; margin: 10px 0 0;">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" placeholder="Password *" class="form-control" id="password" style="padding-right: 42.5px; font-size: 18px; margin: 10px 0 0;">
+            </div>
+            <hr />
+            <div class="row" style="margin-bottom: 11px">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-primary" type="button" onclick="signIn()" style="float: right; font-weight: bold; border: none; -ms-border-radius: 0; border-radius: 0; background-color: #099d77">Sign In</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="margin-top: 7px; width: 33.3333%;">
+            <div class="col-md-6">
+                <a style="cursor: pointer; color: #f15f43; font-weight: bold" onclick="goToPasswordReset()">I forgot my password</a>
+            </div>
+            <div class="col-md-6" style="color: #099d77; font-weight: bold">
+                
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</section>
+
+<section class="row content" id="passwordResetSection" style="margin-top: 60px; margin-bottom: 50px; display: none">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 box box-info" style="width: 33.3333%;">
+        <div class="row modal-header" style="margin-bottom: 15px">
+            <div class="row" style="text-align: center">
+                <div class="col-md-12 no-padding">
+                    <h4 class="access-header" style="font-weight: bold">
+                        Request Password Reset
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="col-md-10" style="padding-left: 0">
+                    <input placeholder="Enter your Email to request Password reset" class="form-control" id="rEmail" type="text">
+                </p>
+                <button role="button" class="btn btn-primary  btn_add" onclick="requestPasswordReset()">
+                    Go!
+                </button>
+            </div>
+
+        </div>
+        <hr/>
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <div class="col-md-5">
+                <a style="color: #008000; cursor: pointer; font-weight: bold" onclick="goToSignIn()">Log in</a>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div class="col-md-4"></div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+    
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+
+    function signIn() {
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        if (email === undefined || email === null || email.length < 1)
+        {
+            alert('Please provide your Email');
+            return;
+        }
+
+        if (email.indexOf('@@') < 0)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (email.indexOf('.') < 1)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (password === undefined || password === null || password.length < 1) {
+            alert('Please provide your Password');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/Login',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({ model: { Email: email, Password: password } }),
+            beforeSend: function () { $('.showBusy').fadeIn(); },
+            success: function (response) {
+                $('.showBusy').fadeOut();
+
+                if (response.Code < 1) {
+                    alert(response.Message);
+                    return;
+                }
+                window.location.href = baseUrl + "/Home";
+            }
+        });
+    }
+
+    function goToSignIn() {
+        $('#signupsection').hide();
+        $('#passwordResetSection').hide();
+        $('#signInSection').fadeIn();
+    }
+    function goToPasswordReset() {
+        $('#signupsection').hide();
+        $('#signInSection').hide();
+        $('#passwordResetSection').fadeIn();
+    }
+
+    function requestPasswordReset() {
+        var email = $('#rEmail').val();
+
+        if (email === undefined || email === null || email.length < 1) {
+            alert('Please provide your Email');
+            return;
+        }
+
+        if (email.indexOf('@@') < 0) {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (email.indexOf('.') < 1) {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl + '/Account/RequestPasswordReset?email=' + email,
+            contentType: "application/json",
+            dataType: 'json',
+            beforeSend: function () { $('.showBusy').fadeIn(); },
+            success: function (response) {
+                $('.showBusy').fadeOut();
+                alert(response.Message);
+                if (response.Code < 1) {
+                    return;
+                }
+                goToSignIn();
+            }
+        });
+    }
+
+    $("#signInSection input:not(button)").keypress(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            signIn();
+        }
+    });
+</script>
+}

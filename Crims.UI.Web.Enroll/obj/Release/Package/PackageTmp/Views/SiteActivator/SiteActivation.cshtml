@@ -1,0 +1,51 @@
+﻿@using WebGrease.Css.Extensions
+
+@{
+    ViewBag.Title = "Site Configuration";
+    Layout = "~/Views/Shared/_Gen_Layout.cshtml";
+}
+<br /><br /><br /><br />
+<section class="row content" style="margin-top: 20px; ">
+    <div class="col-md-4" style="width: 33.333%;"></div>
+    <div class="col-md-4 box box-info" style="width: 33.333%;">
+        <div class="col-md-12" style="margin-bottom: 15px;">
+            <h4>Configure Site</h4>
+            <hr />
+        </div>
+
+        <div class="col-md-12" style="margin-bottom: 15px; display: none" id="siteExpired">
+            <label class="alert-warning">
+                This Site License has Expired. Please take the necessary actions to get it renewed. Thanks
+            </label>
+        </div>
+        <br />
+
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <label>
+                Install Site License
+            </label>
+            <input type="file" class="form-control" id="license" />
+        </div>
+        <br />
+        @*<div class="col-md-12" style="margin-bottom: 10px">
+            <button class="form-control" id="genSiteCode" style="border-color: #228b22; font-weight: bold" onclick="genSiteCode()">SITE CODE</button>
+        </div>
+        <br />
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <button class="form-control" id="actCode" style="border-color: #228b22; font-weight: bold" onclick="getActCode()">ACTIVATION CODE</button>
+        </div>
+        <div class="col-md-12">
+            <button type="button" id="btnActivate" class="btn" style="background-color: #228b22; color: #fff; font-weight: bold" onclick="activateSite()">ACTIVATE</button>
+        </div>*@
+        <br /><br />
+    </div>
+    <div class="col-md-4" style="width: 33.333%;"></div>
+</section><br /><br /><br /><br /><br />
+    @section JavaScript
+    {
+        <script type="text/javascript">
+            var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+            window.baseUrl = baseUrl;
+        </script>
+        <script src="~/Scripts/projectScripts/site-activator.js" type="text/javascript"></script>
+    }

@@ -1,0 +1,97 @@
+﻿@model Crims.Data.Models.CustomField
+@{
+    Layout = null;
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Custom Field</h4>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <div class="form-horizontal">
+        <div class="box-body">
+            <input type="hidden" id="tableId" />
+            <div class="row" style="margin-bottom: 12px">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label>Custom Group</label>
+                        <select class="form-control" id="CustomGroupId">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Custom Field Name</label>
+                        @Html.EditorFor(model => model.CustomFieldName, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.CustomFieldName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label>Custom Field Type</label>
+                        <select class="form-control" id="FieldTypeId" onchange="checkFieldType()">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6" id="clist">
+                        <label>Custom List</label>
+                        <select class="form-control" id="CustomListId" disabled="disabled">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label>Parent Custom Field</label>
+                        <select class="form-control" id="ParentFieldId">
+                            <option value="0">-- Select option --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Tab Index</label>
+                        @Html.EditorFor(model => model.TabIndex, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px">
+                <div class="col-md-12">
+                    <div class="col-md-6" id="csize">
+                        <label>
+                            Custom Field Size
+                        </label>
+                        <input type="text" class="form-control" name="CustomFieldSize" id="CustomFieldSize" disabled="disabled" />
+                    </div>
+                    <div class="col-md-6">
+                        <label style="margin-top:10px">
+                            Is Custom Field Required?
+                        </label>
+                        <div class="row">
+                            <label style="cursor: pointer" class="col-md-6">
+                                <input value="1" id="required" name="reqStatus" onclick="changeReqStatus(1)" type="radio">
+                                <span class="" style="font-weight: normal">
+                                    <span style="margin-bottom: 10px"><label>Required</label></span><br>
+                                </span>
+                            </label>
+                            <label style="cursor: pointer">
+                                <input value="2" id="notRequired" name="reqStatus" onclick="changeReqStatus(2)" type="radio">
+                                <span class="" style="font-weight: normal">
+                                    <span style="margin-bottom: 10px"><label>Not Required</label></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-info pull-right" onclick="processCustomField()">Save</button>
+        </div>
+        <!-- /.box-footer -->
+    </div>
+</div>

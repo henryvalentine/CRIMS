@@ -1,0 +1,701 @@
+Exception Date :: 2016-10-28 04:41:51 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 63
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 126
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+
+
+Exception Date :: 2016-10-28 04:54:06 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 63
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 126
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+
+
+Exception Date :: 2016-10-28 04:57:39 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 63
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 126
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+
+
+Exception Date :: 2016-10-28 04:58:47 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 63
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 126
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+
+
+Exception Date :: 2016-10-30 06:42:19 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassa.<Attach>b__9()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.DbSet`1.Attach(TEntity entity)
+   at Repository.Pattern.Ef6.Repository`1.InsertOrUpdateGraph(TEntity entity)
+   at Service.Pattern.Service`1.InsertOrUpdateGraph(TEntity entity)
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 125
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Attaching an entity of type 'Crims.Data.Models.CustomListData' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+
+
+Exception Date :: 2016-10-30 06:43:06 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassa.<Attach>b__9()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.DbSet`1.Attach(TEntity entity)
+   at Repository.Pattern.Ef6.Repository`1.InsertOrUpdateGraph(TEntity entity)
+   at Service.Pattern.Service`1.InsertOrUpdateGraph(TEntity entity)
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 125
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Attaching an entity of type 'Crims.Data.Models.CustomListData' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+
+
+Exception Date :: 2016-10-30 06:45:19 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassa.<Attach>b__9()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.DbSet`1.Attach(TEntity entity)
+   at Repository.Pattern.Ef6.Repository`1.InsertOrUpdateGraph(TEntity entity)
+   at Service.Pattern.Service`1.InsertOrUpdateGraph(TEntity entity)
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListData p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 125
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 113
+Exception Source :: EntityFramework
+Exception Message :: Attaching an entity of type 'Crims.Data.Models.CustomListData' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+
+
+Exception Date :: 2016-11-03 12:41:47 PM
+Exception Stack Trace ::    at Crims.UI.Web.Controllers.LicenseGeneratorController.GenerateLicense(String projectCode) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\LicenseGeneratorController.cs:line 88
+Exception Source :: Crims.UI.Web
+Exception Message :: Exception of type 'System.OutOfMemoryException' was thrown.
+
+
+Exception Date :: 2017-01-17 01:51:13 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 163
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-17 01:52:51 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 163
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-17 01:53:06 PM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 163
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-17 01:58:53 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQueryInternal[TElement](String commandText, String entitySetName, ExecutionOptions executionOptions, Object[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass65`1.<ExecuteStoreQueryReliably>b__64()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass65`1.<ExecuteStoreQueryReliably>b__63()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQueryReliably[TElement](String commandText, String entitySetName, ExecutionOptions executionOptions, Object[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQuery[TElement](String commandText, Object[] parameters)
+   at Crims.UI.Web.Models.IdentityDbInitializer.InitializeDatabase(ApplicationDbContext context) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Models\IdentityDbInitializer.cs:line 24
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.Entity.Database.information_schema.tables WHERE table_name = 'aspnetusers'' at line 1
+
+
+Exception Date :: 2017-01-17 02:00:54 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQueryInternal[TElement](String commandText, String entitySetName, ExecutionOptions executionOptions, Object[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass65`1.<ExecuteStoreQueryReliably>b__64()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass65`1.<ExecuteStoreQueryReliably>b__63()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQueryReliably[TElement](String commandText, String entitySetName, ExecutionOptions executionOptions, Object[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreQuery[TElement](String commandText, Object[] parameters)
+   at Crims.UI.Web.Models.IdentityDbInitializer.InitializeDatabase(ApplicationDbContext context) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Models\IdentityDbInitializer.cs:line 25
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.tables WHERE table_name = 'aspnetusers'' at line 1
+
+
+Exception Date :: 2017-01-17 02:09:36 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.UI.Web.Models.IdentityDbInitializer.InitializeDatabase(ApplicationDbContext context) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Models\IdentityDbInitializer.cs:line 52
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-01-17 02:21:45 PM
+Exception Stack Trace ::    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Crims.UI.Web.Models.IdentityDbInitializer.InitializeDatabase(ApplicationDbContext context) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Models\IdentityDbInitializer.cs:line 52
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while updating the entries. See the inner exception for details.
+
+
+Exception Date :: 2017-01-18 10:18:10 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 163
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-18 10:19:27 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 163
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-27 04:27:36 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:27:59 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:29:08 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:30:34 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:32:40 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:33:59 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:36:20 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-27 04:37:32 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 81
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.ProjectController.CreateProject(Project project) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\ProjectController.cs:line 125
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ProjectCode must be a string or array type with a maximum length of '8'.
+
+
+Exception Date :: 2017-01-31 11:07:58 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 166
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-31 11:08:45 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 166
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-31 11:09:24 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.Owin.SignInManager`2.<PasswordSignInAsync>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Crims.UI.Web.Controllers.AccountController.<Login>d__15.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 166
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-31 11:09:39 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.AsyncHelper.RunSync[TResult](Func`1 func)
+   at Microsoft.AspNet.Identity.UserManagerExtensions.FindByEmail[TUser,TKey](UserManager`2 manager, String email)
+   at Crims.UI.Web.Controllers.AccountController.<RequestPasswordReset>d__27.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 944
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-01-31 11:18:06 AM
+Exception Stack Trace ::    at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNet.Identity.AsyncHelper.RunSync[TResult](Func`1 func)
+   at Microsoft.AspNet.Identity.UserManagerExtensions.FindByEmail[TUser,TKey](UserManager`2 manager, String email)
+   at Crims.UI.Web.Controllers.AccountController.<RequestPasswordReset>d__27.MoveNext() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 944
+Exception Source :: EntityFramework
+Exception Message :: An error occurred while executing the command definition. See the inner exception for details.
+
+
+Exception Date :: 2017-02-06 08:35:37 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.ResultSet.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.get_Item(String name)
+   at Crims.UI.Web.Controllers.AccountController.Users() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 114
+Exception Source :: MySql.Data
+Exception Message :: Could not find specified column in results: userprofiles.FullName
+
+
+Exception Date :: 2017-02-06 09:03:48 PM
+Exception Stack Trace ::    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at Crims.UI.Web.Controllers.AccountController.Users() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS-05-01-2017\CRIMS\src\Crims\Crims.UI.Web\Controllers\AccountController.cs:line 107
+Exception Source :: MySql.Data
+Exception Message :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as t_., o.* as o_. FROM aspnetusers t JOIN userprofiles o ON o.Id = t.UserInfo_I' at line 1
+
+
+Exception Date :: 2017-02-28 01:17:37 PM
+Exception Stack Trace ::    at Crims.Data.CrimsDbContext.SaveChanges() in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.Data\CrimsDbContext.cs:line 83
+   at Repository.Pattern.Ef6.UnitOfWork.SaveChanges()
+   at Crims.UI.Web.Controllers.CustomListDataController.<ProcessCustomListData>b__8_1(CustomListDataViewModel p) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 139
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Crims.UI.Web.Controllers.CustomListDataController.ProcessCustomListData(List`1 listDataList) in C:\Users\abum\Documents\Visual Studio 2015\Projects\MVC\CHAMS\CRIMS\src\Crims\Crims.UI.Web\Controllers\CustomListDataController.cs:line 111
+Exception Source :: Crims.Data
+Exception Message :: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. The validation errors are: The field ListDataName must be a string or array type with a maximum length of '50'.
+
+

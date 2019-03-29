@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Chams Residency and Identity Management System</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css-custom")
+    @Styles.Render("~/Content/css-admin-custom")   
+     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/bower_components/uidgerator_bundle.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>RIMS</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Chams RIMS</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">View Menu</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="@Url.Content("~/Images/crims-logo.png")" class="user-image" alt="User Image">
+                                <span class="hidden-xs" style="width: 200px;">@User.Identity.Name</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a @Url.Action("MyProfile", "Account")>
+                                        <i class="fa fa-user text-aqua"></i> Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="logout()" style="cursor: pointer">
+                                        <i class="fa fa-lock text-red"></i> Signout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="@Url.Content("~/Images/crims-logo.png")" class="img-responsive" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>System Admin</p>                        
+                    </div>
+                </div>
+
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Project")">
+                            <i class="fa fa-laptop"></i>
+                            <span>Project Sites</span>
+                            @*<i class="fa fa-angle-left pull-right"></i>*@
+                            @*<small class="label pull-right bg-yellow">2</small>*@
+                        </a>
+                        @*<ul class="treeview-menu">
+                            <li><a href="/Project/"><i class="fa fa-circle-o"></i>Projects</a></li>
+                            <li><a href="/Project/"><i class="fa fa-circle-o"></i>Custom Data</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Users</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Enrollment Stations</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Verification Terminals</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> License</a></li>
+                        </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-database"></i>
+                            <span>Custom Data</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "CustomField")"><i class="fa fa-circle-o"></i> Custom Fields</a></li>
+                            <li><a href="@Url.Action("Index", "CustomFieldType")"><i class="fa fa-circle-o"></i> Custom Field Types</a></li>
+                            <li><a href="@Url.Action("Index", "CustomGroup")"><i class="fa fa-circle-o"></i> Custom Group</a></li>
+                            <li><a href="@Url.Action("Index", "CustomList")"><i class="fa fa-circle-o"></i> Custom Lists</a></li>
+                            <li><a href="@Url.Action("Index", "CustomListData")"><i class="fa fa-circle-o"></i> Custom List Data</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Users", "Account")"><i class="fa fa-users"></i><span>Users</span></a></li>
+                    @*<li class="treeview">
+                        <a href="#">
+                           
+                            <i class="fa fa-laptop"></i>
+                            <span>AFIS</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Payments</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Email</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> SMS</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Settings</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>Get Supports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>Tasks</span>
+                        </a>
+                    </li>*@
+                    <li>
+                        <a style="cursor: pointer">
+                            <i class="fa fa-th"></i> <span>Reports</span>
+                        </a>
+                    </li>
+                    @*<li>
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>Settings</span>
+                        </a>
+                    </li>*@
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="padding-right: 10px; padding-left: 10px;">
+           @RenderBody()
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer text-primary">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>CRIMS - Copyright &copy; 2016<a href="#">. Chams Residency and Identity Management System</a>.</strong> All rights reserved.
+        </footer>
+
+
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
+
+    <div class="angular-center-container angular-center-container-position">
+        <div class="angular-centered showBusy">
+            <img src="@Url.Content("~/Content/img/workingonit.gif")" id="loading" />
+        </div>
+    </div>
+
+@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("JavaScript", required: false)
+   
+<script type="text/javascript">
+    
+
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+
+    window.showUiBusy = function () {
+        $('.showBusy').fadeIn();
+    }
+
+    window.hideUiBusy = function () {
+        $('.showBusy').fadeOut();
+    }
+
+    $(function () {
+        $('.showBusy').fadeOut();
+    });
+
+    function logout() {
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/LogOff',
+            contentType: "application/json",
+            dataType: 'json',
+            data: {},
+            beforeSend: function () { $('.showBusy').fadeIn(); },
+            success: function (response) {
+                $('.showBusy').fadeOut();
+
+                if (response < 1) {
+                    return;
+                }
+
+                window.location.href = baseUrl + "/Home";
+            }
+        });
+    }
+</script>
+</body>
+</html>

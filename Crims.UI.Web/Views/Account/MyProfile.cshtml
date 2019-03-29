@@ -1,0 +1,166 @@
+﻿@model Crims.UI.Web.Models.AppUser
+@{
+    ViewBag.Title = "Manage My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="row content" style="padding-top: 50px">
+    <div class="col-md-3" style="width: 5%"></div>
+    <div class="box box-info col-md-6" style="width: 50%">
+        <div class="box-header with-border col-md-12">
+            <h4 class="modal-title">Manage Profile  : <span style="font-weight: bold; font-size: 15px; float: right" id="Email"></span></h4> 
+        </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="col-md-12" style="margin-bottom: 10px">
+                    <label>Full Name *</label>
+                    <input type="text" class="form-control" id="FullName" placeholder="Full Name *"/>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 10px">
+                    <label>Phone Number *</label>
+                    <input type="text" class="form-control" id="PhoneNumber" placeholder="Phone Number *"/>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 10px">
+                    <label>Gender *</label>
+                    <select id="Sex" class="form-control">
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Password *</label>
+                    <input type="password" class="form-control" id="Password" placeholder="Password *"/>
+                </div>
+                <div class="col-md-6">
+                    <label>Confirm Password *</label>
+                    <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password *"/>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info pull-right" onclick="processUsser()">Save</button>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+    </div>
+    <div class="col-md-3" style="width: 25%"></div>
+</section>
+
+@section JavaScript
+{
+<script type="text/javascript">
+   
+    
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+    
+    var userScope = {
+        Id: '',
+        ProfileId: '',
+        FullName: '',
+        Email: '',
+        PhoneNumber: '',
+        Sex: '',
+        Password: '',
+        ConfirmPassword: ''
+    };
+       
+    $(document).ready(function ()
+    {
+        var id = "@ViewBag.Id";
+
+        $.ajax({
+            url: baseUrl + '/Account/GetUser?userId=' + id,
+            contentType: "application/json",
+            dataType: 'json',
+            type: 'GET',
+            beforeSend: function(){$('.showBusy').fadeIn();},
+            success: function(response) {
+                $('.showBusy').fadeOut();
+                if (!response || response.Id.length < 1)
+                {
+                    alert('User information could not be retrieved. Please try again or contact Support team');
+                    return;
+                }
+
+                userScope = response;
+                $("#myModalLabel").html('Update Profile');
+                $("#FullName").val(response.FullName);
+                $("#Email").val(response.Email);
+                $("#Email").text(response.Email);
+                $("#PhoneNumber").val(response.PhoneNumber);
+                $("#Sex").val(response.Sex);
+
+            }
+        });
+    });
+
+    function processUsser()
+    {
+        userScope.FullName = $("#FullName").val();
+        userScope.PhoneNumber = $("#PhoneNumber").val();
+        userScope.Sex = $("#Sex").val();
+        userScope.Password = $("#Password").val();
+        userScope.ConfirmPassword = $("#ConfirmPassword").val();
+
+        if (userScope.FullName === undefined || userScope.FullName === null || userScope.FullName.length < 1) {
+            alert('Please provide your Full Name');
+            return;
+        }
+
+        if (userScope.Email === undefined || userScope.Email === null || userScope.Email.length < 1) {
+            alert('Please provide a valid Email');
+            return;
+        }
+        if (userScope.PhoneNumber === undefined || userScope.PhoneNumber === null || userScope.PhoneNumber.length < 1)
+        {
+            alert('Please provide your Phone Number');
+            return;
+        }
+
+        if (userScope.Sex === undefined || userScope.Sex === null || userScope.Sex.length < 1)
+        {
+            alert('Please select Gender');
+            return;
+        }
+
+        if (userScope.Password !== undefined && userScope.Password !== null && userScope.Password.length > 0)
+        {
+            if (userScope.ConfirmPassword === undefined || userScope.ConfirmPassword === null || userScope.ConfirmPassword.length < 1)
+            {
+                alert('Please confirm Password');
+                return;
+            }
+
+            if (userScope.Password !== userScope.ConfirmPassword)
+            {
+                alert('The Passwords do not match');
+                return;
+            }
+        }
+
+        $.ajax({
+            url: baseUrl + '/Account/EditMyProfile',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({ user: userScope }),
+            type: 'POST',
+            beforeSend: function(){ $('.showBusy').fadeIn();},
+            success: function(response)
+            {
+                $('.showBusy').fadeOut();
+                alert(response.Message);
+
+                if (!response || response.Code < 1)
+                {
+                    return;
+                }
+
+                location.reload();
+            }
+        });
+    }
+
+</script>
+}

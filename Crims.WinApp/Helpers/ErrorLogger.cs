@@ -1,0 +1,46 @@
+﻿using System;
+using System.IO;
+using System.Text;
+
+namespace Crims.UI.Win.Enroll.Helpers
+{
+    public static class AppErrorLogger
+    {
+        public static string GetLogFilePath()
+        {
+            try
+            {
+                return Environment.CurrentDirectory + @"\ErrorLog.txt"; ;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        public static void LogError(string stackTrace, string errorSource, string errorMessage)
+        {
+            var logPath = GetLogFilePath();
+            if (!string.IsNullOrEmpty(logPath))
+            {
+                var sw = File.AppendText(logPath);
+                try
+                {
+                    var messageBuilder = new StringBuilder();
+                    messageBuilder.Append("Exception Date :: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\n");
+                    messageBuilder.Append("Exception Stack Trace :: " + stackTrace + "\n");
+                    messageBuilder.Append("Exception Source :: " + errorSource + "\n");
+                    messageBuilder.Append("Exception Message :: " + errorMessage + "\n\n");
+                    sw.WriteLine(messageBuilder);
+                    sw.Close();
+                }
+                catch (Exception ex)
+                {
+                    sw.WriteLine(ex.Message);
+                }
+            }
+
+        }
+
+    }
+}

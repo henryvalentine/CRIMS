@@ -1,0 +1,718 @@
+<script type="text/javascript">
+        var baseUrl = '/crimsWeb';
+        //var baseUrl = '';
+        var genderOptions = '<option value="0">-- Select option --</option><option value="1">Male</option><option value="2">Female</option>';
+        var titleOptions = '<option value="0">-- Select option --</option><option value="1">Mr.</option><option value="2">Mrs.</option><option value="3">Miss</option><option value="4">Chief</option><option value="5">Rotr.</option>';
+        
+        $(function ()
+        {
+            //Load the add page
+            $(".btn_add").click(function ()
+            {
+                $("#process_modal_body").load(baseUrl + '/BaseData/GetView', function ()
+                {
+                    $("#myModalLabel").html('Capture Basedata');
+                    $("#Gender").html(genderOptions);
+                    $("#Title").html(titleOptions);
+                     $('#DOB').datetimepicker({
+                                    format: 'd/m/Y',
+                                    maxDate: new Date()-1,
+                                    timepicker: false,
+                                    onSelectDate: function (dp, $input)
+                                    {
+                                        window.baseDataScope.DOB = dp;
+                                    }
+                                });
+                });
+                
+            });
+
+            //Load the edit page
+            $(".editBtn").click(function ()
+            {
+                var itemId = $(this).data("edit-id");
+                if (itemId < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                window.showUiBusy();
+
+                $.ajax({
+                    url: baseUrl + '/BaseData/GetBaseData?id=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (response)
+                    {
+                        window.hideUiBusy();
+                        if (!response || response.TableId < 1)
+                        {
+                            alert('Base Data information could not be retrieved. Please try again or contact Support team');
+                            return;
+                        }
+                        
+                        $("#process_modal_body").load(baseUrl + '/BaseData/GetView', function ()
+                        {
+                            window.baseDataScope = response;
+                            
+                            $("#myModalLabel").html('Update Base Data');
+                            $("#EnrollmentId").val(window.baseDataScope.EnrollmentId);
+                            $("#ProjectPrimaryCode").val(window.baseDataScope.ProjectPrimaryCode);
+                            $("#Email").val(window.baseDataScope.Email);
+                            $("#MobileNumber").val(window.baseDataScope.MobileNumber);
+                            $("#Surname").val(window.baseDataScope.Surname);
+                            $("#CuntryCode").val(window.baseDataScope.CuntryCode);
+                            $("#MiddleName").val(window.baseDataScope.MiddleName);
+                            $("#Firstname").val(window.baseDataScope.Firstname);
+                            $("#MiddleName").val(window.baseDataScope.MiddleName);
+                            $("#ValidIdNumber").val(window.baseDataScope.ValidIdNumber);
+                            $("#Gender").html(genderOptions).val(window.baseDataScope.Gender);
+                            $("#Title").html(titleOptions).val(window.baseDataScope.Title);
+                            var dateVar = moment(window.baseDataScope.DOB).format("DD/MM/YYYY");
+                            $("#DOB").datetimepicker({
+                                format: 'd/m/Y', maxDate: new Date()-1, timepicker: false,
+                                onSelectDate: function (dp, $input)
+                                {
+                                    window.baseDataScope.DOB = dp;
+                                }
+                            }).val(dateVar);
+
+                        });
+                    }
+                });
+
+            });
+
+            //Load the Custom Data Enrollment page
+            $(".dataBtn").click(function ()
+            {
+                var itemId = $(this).data("edit-id");
+                if (!itemId || itemId.length < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                //Use this to hold all retrieved CustomData
+                window.customDataList = [];
+
+                window.showUiBusy();
+                window.itemId = itemId;
+                $.ajax({
+                    url: baseUrl + '/ProjectCustomData/GetCustomDataGroupFields?baseDataId=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (response)
+                    {
+                        window.hideUiBusy();
+                        if (!response || response.TableId < 1)
+                        {
+                            alert('Custom Data information processing could not be initiated. Please try again or contact Support team');
+                            return;
+                        }
+
+                         InitialiseBaseDataUi(response);
+                    }
+                });
+
+            });
+            //Load the delete page
+            $(".deleteBtn").click(function ()
+            {
+                var itemId = $(this).data("delete-id");
+                if (!itemId || itemId < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                window.showUiBusy();
+
+                $.ajax({
+                    url: baseUrl + '/BaseData/DeleteBaseData?baseDataTableId=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'POST',
+                    beforeSend: function() {
+                        if (!confirm('Do you want to delete this item?'))
+                        {
+                            return;
+                        }
+                    },
+                    success: function (response)
+                    {
+                        window.hideUiBusy();
+                        alert(response.Message);
+                        if (!response || response.Code < 1)
+                        {
+                            return;
+                        }
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+        function processBaseData()
+        {
+            window.baseDataScope.Email = $("#Email").val();
+            window.baseDataScope.MobileNumber = $("#MobileNumber").val();
+            window.baseDataScope.Surname = $("#Surname").val();
+            window.baseDataScope.Gender = $("#Gender").val();
+            window.baseDataScope.Title = $("#Title").val();
+            window.baseDataScope.CuntryCode = $("#CuntryCode").val();
+            window.baseDataScope.MiddleName = $("#MiddleName").val();
+            window.baseDataScope.Firstname = $("#Firstname").val();
+            window.baseDataScope.MiddleName = $("#MiddleName").val();
+            window.baseDataScope.ValidIdNumber = $("#ValidIdNumber").val();
+            
+            if (window.baseDataScope.Email.length < 1)
+            {
+                alert('Please provide Email');
+                return;
+            }
+
+            if (window.baseDataScope.MobileNumber.length < 1) {
+                alert('Please provide Mobile Number');
+                return;
+            }
+
+            if (window.baseDataScope.Surname.length < 1)
+            {
+                alert("Please provide Surname");
+                return;
+            }
+
+            if (window.baseDataScope.Firstname.length < 1) {
+                alert("Please provide First Name");
+                return;
+            }
+           
+            if (window.baseDataScope.Gender.length < 1)
+            {
+                alert('Please select Gender');
+                return;
+            }
+            
+            if (window.baseDataScope.DOB.length < 1) {
+                alert('Please provide Date Of Birthday');
+                return;
+            }
+            var url = '';
+            if (window.baseDataScope.TableId < 1)
+            {
+                window.baseDataScope.ProjectPrimaryCode = window.generateUid().toUpperCase();
+                url = baseUrl + '/BaseData/EnrollBaseData';
+            }
+            else
+            {
+                url = baseUrl + '/BaseData/UpdateBaseData';
+            }
+            
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ basedata: window.baseDataScope }),
+                type: 'POST',
+                beforeSend: function () { window.showUiBusy(); },
+                success: function (response)
+                {
+                    window.hideUiBusy();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+
+        $(document).ready(function ()
+        {
+            window.baseDataScope =
+            {
+                TableId: 0,
+                Email: '',
+                MobileNumber: '',
+                Surname: '',
+                Firstname: '',
+                Gender: '',
+                DOB: '',
+                EnrollmentId: '',
+                EnrollmentDate: '',
+                Title: '',
+                CuntryCode: '',
+                ProjectPrimaryCode: window.generateUid().toUpperCase(),
+                ValidIdNumber: '',
+                TestColumn: '',
+                ProjectCode: ''
+            };
+
+            $.ajax({
+                url: baseUrl + '/BaseData/GetProject',
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                beforeSend: function ()
+                {
+                   window.showUiBusy();
+                },
+                success: function (response)
+                {
+                    window.hideUiBusy();
+                    if (!response || response.TableId < 1)
+                    {
+                        alert('Project information could not be retrieved. Please try again or contact Support team');
+                        return;
+                    }
+
+                    window.baseDataScope.ProjectCode = response.ProjectCode;
+                }
+            });
+        });
+
+        //____________________________________________ Custom Data ____________________________________________________
+        
+        function InitialiseBaseDataUi(data)
+        {
+            if (!data || data.CustomGroupViewModels.length < 1)
+            {
+                alert('An unknown error was encountered. Please refresh the page and try again.');
+                return;
+            }
+
+            $('#EnrollmentId').html(data.EnrollmentId);
+            $('#ProjectPrimaryCode').html(data.ProjectPrimaryCode);
+            $('#Name').html(data.Name);
+
+            var accordionUlHeader = $('.projectTabs');
+            var tabsParent = $('.tabsParent');
+            
+            accordionUlHeader.html('');
+            tabsParent.html('');
+
+            var customGroups = data.CustomGroupViewModels;
+            var length = 1;
+            $.each(customGroups, function (i, o)
+            {
+                var li = '<li role="presentation"><input type="hidden" id="grp_' + length + '" /><a href="#tab_' + length + '" role="tab" data-toggle="tab">' + o.GroupName + '</a></li>';
+                accordionUlHeader.append(li);
+
+                var tabpanel = '<div role="tabpanel" class="tab-pane fade" id="tab_' + length + '" style="margin-top: 30px"><div class="row">';
+                var customFields = o.CustomFieldViewModels;
+                if (customFields !== undefined && customFields !== null && customFields.length > 0)
+                {
+                    $.each(customFields, function (j, f)
+                    {
+                        var req = f.Required === 1 || f.Required === '1' ? 'true' : 'false';
+                        var req2 = f.Required === 1 || f.Required === '1' ? '*' : '';
+
+                        if (f.CustomFieldType.FieldTypeName === 'Text')
+                        {
+                            tabpanel += '<div  id="frmGrp_' + f.CustomFieldId + '" class="col-md-6" style="margin-bottom: 10px"><label>' + f.CustomFieldName + ' ' + req2 + '</label><input data-edit-id="" data-required="' + req + '" size="' + f.CustomFieldSize + '" type="text" class="form-control"  id="' + f.CustomFieldId + '" /></div>';
+                        }
+
+                        else if (f.CustomFieldType.FieldTypeName === 'Number')
+                        {
+                            tabpanel += '<div  id="frmGrp_' + f.CustomFieldId + '" class="col-md-6" style="margin-bottom: 10px"><label>' + f.CustomFieldName + ' ' + req2 + '</label><input data-edit-id="" data-required="' + req + '" size="' + f.CustomFieldSize + '" type="number" class="form-control"  id="' + f.CustomFieldId + '" /></div>';
+                        }
+
+                        else if (f.CustomFieldType.FieldTypeName === 'Date')
+                        {
+                            tabpanel += '<div  id="frmGrp_' + f.CustomFieldId + '" class="col-md-6" style="margin-bottom: 10px"><label>' + f.CustomFieldName + ' ' + req2 + '</label><input data-edit-id="" data-required="' + req + '" size="' + f.CustomFieldSize + '" type="text" class="form-control date"  id="' + f.CustomFieldId + '" /></div>';
+                        }
+
+                        if (f.CustomFieldType.FieldTypeName === 'List' && f.CustomList !== undefined && f.CustomList !== null)
+                        {
+                            var qq = f.CustomList;
+
+                            tabpanel += '<div  id="frmGrp_' + f.CustomFieldId + '" class="col-md-6" style="margin-bottom: 10px"><label>' + f.CustomFieldName + ' ' + req2 + '</label>';
+                            
+                            if (qq.HasChildren === true)
+                            {
+                                tabpanel += '<select data-edit-id="" data-required="' + req + '" data-has-child="true" data-required="' + f.Required + '" data-pList="' + qq.ParentListId + '" data-list="' + qq.CustomListId + '" onchange="checkChildList($(this))" class="form-control" id="' + f.CustomFieldId + '"><option value="0">-- Select option --</option>';
+                            }
+                            else
+                            {
+                                tabpanel += '<select data-edit-id="" data-required="' + req + '" data-has-child="false" data-required="' + f.Required + '" data-list="' + qq.CustomListId + '" class="form-control" id="' + f.CustomFieldId + '"><option value="0">-- Select option --</option>';
+                            }
+
+                            if (qq.CustomListDatas !== undefined && qq.CustomListDatas !== null && qq.CustomListDatas.length > 0)
+                            {
+                                var customListData = qq.CustomListDatas;
+                                $.each(customListData, function (m, u)
+                                {
+                                    tabpanel += '<option value="' + u.CustomListDataId + '">' + u.ListDataName + '</option>';
+                                });
+                            }
+
+                            tabpanel += '</select></div>';
+                        }
+
+                        //window['Tbl_' + f.CustomFieldId] = f;
+                    });
+                }
+
+                tabpanel += '</div><br/>';
+                tabpanel += '<div class="row"><div class="col-md-12">' + '<button type="button" class="btn btn-primary" onclick="saveThis(' + length + ')">Save</button></div></div>';
+                tabpanel += '<br/></div>';
+                
+                tabsParent.append(tabpanel);
+                length++;
+            });
+            
+            $('.projectTabs li:first').addClass('active');
+            
+            $('div[id^="tab_"]:first').addClass('in active');
+
+            var dateControls = $('.date');
+            if (dateControls !== undefined && dateControls !== null && dateControls.length > 0)
+            {
+                $(".date").each(function ()
+                {
+                    $(this).datetimepicker({
+                        format: 'Y-m-d',
+                        minDate: new Date(),
+                        timepicker: false,
+                        onSelectDate: function (dp, $input)
+                        {
+                            //Assign to the appropriate Field
+
+                            //window['Tbl_' + $(o).id][$(o).data('prop')] = dp;
+                        }
+                    });
+                });
+            }
+
+            getUserDatas(data.EnrollmentId);
+
+            $('.tblList').hide();
+            $('#customDataView').fadeIn();
+        }
+        function checkChildList(control)
+        {
+            var tt = control;
+            var value = tt.val();
+            if (value === undefined || value === null || value === '0' || value.length < 1)
+            {
+                //alert('Invalid selection!');
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/ProjectCustomData/GetCustomListDatasByParentList?parentListId=' + tt.data('list') + '&parentNode=' + value,
+                contentType: "application/json", 
+                dataType: 'json',
+                type: 'GET',
+                beforeSend: function ()
+                {
+                    window.showUiBusy();
+                },
+                success: function (cList)
+                {
+                    window.hideUiBusy();
+                    if (!cList || !cList.CustomListDatas || cList.CustomListDatas.length < 1)
+                    {
+                        alert('Some Further important information information could not be retrieved. Please try again or contact Support team');
+                        return;
+                    }
+
+                    var req = cList.Required === 1 || cList.Required === '1' ? 'true' : 'false';
+                    var req2 = cList.Required === 1 || cList.Required === '1' ? '*' : '';
+
+                    if ($('#' + cList.CustomFieldId).length)
+                    {
+                        var options = '<option value="0">-- Select option --</option>';
+                        cList.CustomListDatas.forEach(function (c, i)
+                        {
+                            options += '<option value="' + c.CustomListDataId + '">' + c.ListDataName + '</option>';
+                        });
+
+                        $('#' + cList.CustomFieldId).html(options);
+                    }
+                    else
+                    {
+                        var newFormGroup = '<div style="display: none; margin-bottom: 10px" class="col-md-6" id="frmGrp_' + cList.CustomFieldId + '"><label>' + cList.CustomFieldName + ' ' + req2 + '</label>';
+
+                        var qq = cList;
+                        if (qq.HasChildren === true)
+                        {
+                            newFormGroup += '<select data-edit-id="" data-required="' + req + '" data-has-child="true" data-required="' + cList.Required + '" data-list="' + qq.CustomListId + '" onchange="checkChildList($(this))" class="form-control" id="' + cList.CustomFieldId + '"><option value="0">-- Select option --</option>';
+                        }
+                        else {
+                            newFormGroup += '<select data-edit-id="" data-required="' + req + '" data-has-child="false" data-list="' + qq.CustomListId + '" class="form-control" id="' + cList.CustomFieldId + '"><option value="0">-- Select option --</option>';
+                        }
+
+                        qq.CustomListDatas.forEach(function (c, i)
+                        {
+                            newFormGroup += '<option value="' + c.CustomListDataId + '">' + c.ListDataName + '</option>';
+                        });
+
+                        newFormGroup += '</select></div>';
+
+                        $('#frmGrp_' + tt.attr('id')).after(newFormGroup);
+
+                        $('#frmGrp_' + cList.CustomFieldId).fadeIn();
+                    }
+
+                    //Check if this child List already has a data previously selected
+                    setChildListValue(cList.CustomFieldId);
+                }
+           });
+        }
+        function closeCustomDataView()
+        {
+            $('#customDataView').hide();
+            $('.tblList').fadeIn();
+        }
+        function saveThis(tabId)
+        {
+            var tab = $('#tab_' + tabId);
+            if (tab === undefined || tab === null)
+            {
+                alert('An unknown error was encountered on this page. Please refresh the page and try again');
+                return;
+            }
+
+            var selectList = $('#tab_' + tabId + ' select');
+            var textList = $('#tab_' + tabId + ' input:not(button)');
+            var textAreaList = $('#tab_' + tabId + ' textarea');
+            
+            if ((!selectList || selectList.length < 1) && (!textList || textList.length < 1) && (!textAreaList || textAreaList.length < 1))
+            {
+                alert('An unknown error was encountered on this page. Please refresh the page and try again');
+                return;
+            }
+
+            var customDatas = [];
+            
+            if (selectList.length > 0)
+            {
+                for (var i = 0; i < selectList.length; i++)
+                {
+                    var customDataControl = $(selectList[i]);
+                    var required = customDataControl.data('required');
+                    var customData = customDataControl.val();
+
+                    if (required === true || required === 'true') {
+                        if (customData === undefined || customData === null || customData === '0' || customData === '') {
+                            alert('Please provide/select all required fields and try again');
+                            return;
+                        }
+                    }
+
+                    customDatas.push({
+                        CustomDataId: customDataControl.data('edit-id'),
+                        CustomFieldId: customDataControl.attr('id'),
+                        EnrollmentId: $('#EnrollmentId').html(),
+                        CrimsCustomData: customData,
+                        CustomListId: customDataControl.data('list'),
+                        ProjectSIteId: $('#ProjectPrimaryCode').html()
+                    });
+                }
+            }
+
+            if (textList.length > 0)
+            {
+                for (var j = 0; j < textList.length; j++)
+                {
+                    var textDataControl = $(textList[j]);
+                    var tetxtRequired = textDataControl.data('required');
+                    var textData = textDataControl.val();
+
+                    if (tetxtRequired === true || tetxtRequired === 'true')
+                    {
+                        if (textData === undefined || textData === null || textData.length < 1 || textData === '')
+                        {
+                            alert('Please provide/select all required fields and try again');
+                            return;
+                        }
+                    }
+
+                    customDatas.push({
+                        CustomDataId: textDataControl.data('edit-id'),
+                        CustomFieldId: textDataControl.attr('id'),
+                        EnrollmentId: $('#EnrollmentId').html(),
+                        CrimsCustomData: textData,
+                        CustomListId: null,
+                        ProjectSIteId: $('#ProjectPrimaryCode').html()
+                    });
+                }
+            }
+
+            if (textAreaList.length > 0)
+            {
+                for (var k = 0; k < textAreaList.length; k++)
+                {
+                    var textAreaDataControl = $(textAreaList[j]);
+                    var textAreaRequired = textAreaDataControl.data('required');
+                    var textAreaData = textAreaDataControl.val();
+
+                    if (textAreaRequired === true || textAreaRequired === 'true')
+                    {
+                        if (textAreaData === undefined || textAreaData === null || textAreaData.length < 1 || textAreaData === '')
+                        {
+                            alert('Please provide/select all required fields and try again');
+                            return;
+                        }
+                    }
+
+                    customDatas.push({
+                        CustomDataId: textAreaDataControl.data('edit-id'),
+                        CustomFieldId: textAreaDataControl.attr('id'),
+                        EnrollmentId: $('#EnrollmentId').html(),
+                        CrimsCustomData: textAreaData,
+                        CustomListId: null,
+                        ProjectSIteId: $('#ProjectPrimaryCode').html()
+                    });
+                }
+            }
+
+            if (customDatas.length < 1)
+            {
+                alert('An unknown error was encountered on this page. Please refresh the page and try again');
+                return;
+            }
+
+            $.ajax({
+                url: baseUrl + '/CustomData/ProcessCustomData',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({customDataList: customDatas}),
+                type: 'POST',
+                beforeSend: function () { window.showUiBusy(); },
+                success: function (response)
+                {
+                    window.hideUiBusy();
+
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    getUserDatas($('#EnrollmentId').html());
+                }
+            });
+        }
+        function getUserDatas(enrollmentId)
+        {
+            $.ajax({
+                url: baseUrl + '/CustomData/GetUserCustomDatas?enrollmentId=' + enrollmentId,
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success: function (response) {
+                    window.hideUiBusy();
+                    if (!response || response.length < 1)
+                    {
+                        return;
+                    }
+
+                    window.customDataList = response;
+
+                    populateCustomDataUi(response);
+                }
+            });
+        }
+        function populateCustomDataUi(data)
+        {
+            if (!data || data.length < 1)
+            {
+                return;
+            }
+            
+            $.each(data, function (i, o)
+            {
+                var dataControl = $('#' + o.CustomFieldId);
+                if (dataControl !== undefined && dataControl !== null)
+                {
+                    //Set the previously selected data and set 
+                    //the CustomDataId to data-edit-id for Editing
+
+                    
+                    if (!o.CustomListId || o.CustomListId.length < 1)
+                    {
+                        dataControl.val(o.CrimsCustomData).attr('data-edit-id', o.CustomDataId);
+                    }
+                    else
+                    {
+                        if (o.ParentListId === undefined || o.ParentListId === null || o.ParentListId.length < 1)
+                        {
+                            dataControl.val(o.CrimsCustomData).attr('data-edit-id', o.CustomDataId);
+
+                            if (o.HasChildren === true)
+                            {
+                                checkChildList(dataControl);
+                            }
+                        }
+                    }
+                }
+
+            });
+        }
+        function setChildListValue(listFieldId)
+        {
+            if (!window.customDataList || window.customDataList.length < 1 || !listFieldId || listFieldId.length < 1)
+            {
+                return;
+            }
+
+            var dataControl = $('#' + listFieldId);
+
+            if (dataControl !== undefined && dataControl !== null)
+            {
+                var data = window.customDataList.filter(function (o)
+                {
+                    return o.CustomFieldId === listFieldId;
+                });
+
+                if (data.length > 0)
+                {
+                    var childData = window.customDataList.filter(function (q)
+                    {
+                        return q.ParentListId === data[0].ParentListId;
+                    });
+                    if (childData.length > 0)
+                    {
+                        dataControl.val(childData[0].CrimsCustomData).attr('data-edit-id', childData[0].CustomDataId);
+
+                        if (childData[0].HasChildren === true)
+                        {
+                            checkChildList(dataControl);
+                        }
+                    }
+                   
+                } 
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+
+    window.showUiBusy =  function () {
+        $('.showBusy').fadeIn();
+    }
+
+    window.hideUiBusy = function() {
+        $('.showBusy').fadeOut();
+    }
+
+    $(function() {
+        $('.showBusy').fadeOut();
+    });
+    $(function() {
+        $('.showBusy').fadeOut();
+    });
+          
+    
+    </script>

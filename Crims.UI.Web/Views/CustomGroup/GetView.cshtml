@@ -1,0 +1,37 @@
+﻿@model Crims.Data.Models.CustomGroup
+@{
+    Layout = null;
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Custom Group</h4>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <div class="form-horizontal">
+        <div class="box-body">
+            <input type="hidden" id="tableId" />
+            <div class="col-md-12">
+                <label>
+                    Custom Group Name
+                </label>
+                @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                <label>
+                    Tab Index
+                </label>
+                @Html.EditorFor(model => model.TabIndex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TabIndex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-info pull-right" onclick="processCustomGroup()">Save</button>
+        </div>
+        <!-- /.box-footer -->
+    </div>
+</div>

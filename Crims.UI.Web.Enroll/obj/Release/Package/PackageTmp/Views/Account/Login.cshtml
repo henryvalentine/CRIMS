@@ -1,0 +1,396 @@
+﻿@using Crims.UI.Web.Enroll.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Gen_Layout.cshtml";
+}
+
+<section class="row content" id="signInSection" style="margin-top: 60px; margin-bottom: 50px">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 box box-info" style="width: 33.3333%;">
+            <div class="row modal-header" style="margin-bottom: 15px">
+                <div class="row" style="text-align: center">
+                    <div class="col-md-12 no-padding">
+                        <h4 class="access-header" style="font-weight: bold">
+                            Sign In
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="email" placeholder="Email *" class="form-control" id="email" style="padding-right: 42.5px; font-size: 18px; margin: 10px 0 0;">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" placeholder="Password *" class="form-control" id="password" style="padding-right: 42.5px; font-size: 18px; margin: 10px 0 0;">
+            </div>
+            <hr />
+            <div class="row" style="margin-bottom: 11px">
+                <div class="col-md-4">
+                    
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-primary" type="button" onclick="signIn()" style="float: right; font-weight: bold; border: none; -ms-border-radius: 0; border-radius: 0; background-color: #099d77">Sign In</button>
+                </div>
+                <div class="col-md-4">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="margin-top: 7px; width: 33.3333%;">
+            <div class="col-md-6">
+                <a style="cursor: pointer; color: #f15f43; font-weight: bold" onclick="goToPasswordReset()">I forgot my password</a>
+            </div>
+            @*<div class="col-md-6" style="color: #099d77; font-weight: bold">
+                <a style="cursor: pointer" onclick="goToSignUp()">I don't have an account</a>
+            </div>*@
+        </div>
+        <div class="col-md-4"></div> 
+    </div>
+</section>
+
+<section class="row content" id="signupsection" style="margin-top: 20px; margin-bottom: 50px; display: none">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 box box-info" style="width: 66.6667%;">
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="custom_modal" id="signupView">
+                    <div class="row modal-header" style="margin-bottom: 10px">
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-12 no-padding">
+                                <h4 class="access-header" style="font-weight :bold">
+                                    Account set up
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-6" style="border-right: 1px solid #c0c0c0">
+                            <label>First Name *</label>
+                            <input type="text" placeholder="First Name *" class="form-control" id="firstName" tabindex="1"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email *</label>
+                            <input type="email" placeholder="Email" class="form-control" id="sEmail" tabindex="5">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-6" style="border-right: 1px solid #c0c0c0">
+                            <label>Last Name *</label>
+                            <input type="text" placeholder="Last Name *" class="form-control" id="lastName" tabindex="2"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password *</label>
+                            <input type="password" placeholder="Password" class="form-control" id="sPassword" tabindex="6">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-6" style="border-right: 1px solid #c0c0c0">
+                            <label>Phone Number *</label>
+                            <input type="text" placeholder="Phone Number" class="form-control" id="phone" tabindex="3">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Confirm Password *</label>
+                            <input type="password" placeholder="Confirm Password" class="form-control" id="sConfirmPassword" tabindex="7">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="border-right: 1px solid #c0c0c0">
+                            <label>Gender *</label>
+                            <select class="form-control" id="gender" tabindex="4">
+                                <option value="">-- Select Gender --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-7">
+                            <button onclick="signUp()" class="btn btn-adn" tabindex="8">Sign Up</button>
+                        </div>
+                        <div class="col-md-5"><a style="color: #008000; cursor: pointer; font-weight: bold" onclick="goToSignIn()" tabindex="8">Log in</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</section>
+
+<section class="row content" id="passwordResetSection" style="margin-top: 60px; margin-bottom: 50px; display: none">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 box box-info" style="width: 33.3333%;">
+        <div class="row modal-header" style="margin-bottom: 15px">
+            <div class="row" style="text-align: center">
+                <div class="col-md-12 no-padding">
+                    <h4 class="access-header" style="font-weight: bold">
+                        Request Password Reset
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="col-md-10" style="padding-left: 0">
+                    <input placeholder="Enter your Email to request Password reset" class="form-control" id="rEmail" type="text">
+                </p>
+                <button role="button" class="btn btn-primary  btn_add" onclick="requestPasswordReset()">
+                    Go!
+                </button>
+            </div>
+           
+        </div>
+        <hr/>
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <div class="col-md-5"><a style="color: #008000; cursor: pointer; font-weight: bold" onclick="goToSignIn()">Log in</a>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div class="col-md-4"></div>
+</section>
+<br><br>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+
+    function getCallBackObj() {
+       
+    }
+
+    function signIn()
+    {
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        if (email === undefined || email === null || email.length < 1)
+        {
+            alert('Please provide your Email');
+            return;
+        }
+
+        if (email.indexOf('@@') < 0)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (email.indexOf('.') < 1)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+        var splits = email.split('.');
+        var last = splits[splits.length - 1];
+        if (last.length < 1)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (password === undefined || password === null || password.length < 1) {
+            alert('Please provide your Password');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/Login',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({ model: { Email: email, Password: password } }),
+            beforeSend: function () { window.showUiBusy(); },
+            success: function (response)
+            {
+                window.hideUiBusy();
+
+                if (response.Code < 1)
+                {
+                    alert(response.Message);
+                    return;
+                }
+
+                if (typeof callbackObj != 'undefined' && typeof callbackObj != null)
+                {
+                    callbackObj.loginSuccessful(JSON.stringify(response));
+                }
+                
+                if (response.Role.toLowerCase() === 'enrollee')
+                {
+                    window.location.href = baseUrl + "/Enrollment";
+                }
+                else
+                {
+                    window.location.href = baseUrl + "/Home/ProjectOptions";
+                }
+
+            }
+        });
+    }
+
+    function goToSignUp() {
+        $('#signInSection').hide();
+        $('#passwordResetSection').hide();
+        $('#signupsection').fadeIn();
+    }
+
+    function goToSignIn()
+    {
+        $('#signupsection').hide();
+        $('#passwordResetSection').hide();
+        $('#signInSection').fadeIn();
+    }
+    function goToPasswordReset()
+    {
+        $('#signupsection').hide();
+        $('#signInSection').hide();
+        $('#passwordResetSection').fadeIn();
+    }
+
+    function signUp() {
+        var email = $('#sEmail').val();
+        var password = $('#sPassword').val();
+        var confirmPassword = $('#sConfirmPassword').val();
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var gender = $('#gender').val();
+        var phone = $('#phone').val();
+
+        if (firstName === undefined || firstName === null || firstName.length < 1) {
+            alert('Please provide your First Name');
+            return;
+        }
+
+        if (lastName === undefined || lastName === null || lastName.length < 1)
+        {
+            alert('Please provide your Last Name');
+            return;
+        }
+
+        if (gender === undefined || gender === null || gender.length < 1) {
+            alert('Please select your Gender');
+            return;
+        }
+
+        if (phone === undefined || phone === null || phone.length < 1) {
+            alert('Please provide your Phone Number');
+            return;
+        }
+        if (email === undefined || email === null || email.length < 1) {
+            alert('Please provide your Email');
+            return;
+        }
+
+        if (email.indexOf('@@') < 0) {
+            alert('Please provide a valid Email - 1');
+            return;
+        }
+        if (email.indexOf('.') < 0) {
+            alert('Please provide a valid Email - 2');
+            return;
+        }
+        if (password === undefined || password === null || password.length < 1) {
+            alert('Please provide your Password');
+            return;
+        }
+        if (confirmPassword === undefined || confirmPassword === null || confirmPassword.length < 1) {
+            alert('Please Confirm your Password');
+            return;
+        }
+        if (password !== confirmPassword) {
+            alert('The passwords do not match');
+            return;
+        }
+
+        var fullName = firstName + " " + lastName;
+
+        var payload =
+                {
+                    Email: email,
+                    Password: password,
+                    PhoneNumber: phone,
+                    FullName: fullName,
+                    ConfirmPassword: confirmPassword,
+                    Sex: gender,
+                    UserId: ''
+                };
+
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '/Account/UserSignUp',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({ user: payload }),
+            beforeSend: function () { window.showUiBusy();},
+            success: function (response)
+            {
+                window.hideUiBusy();
+                alert(response.Message);
+                if (response.Code < 1)
+                {
+                    return;
+                }
+                goToSignIn();
+            }
+        });
+    }
+
+    function requestPasswordReset()
+    {
+        var email = $('#rEmail').val();
+
+        if (email === undefined || email === null || email.length < 1)
+        {
+            alert('Please provide your Email');
+            return;
+        }
+
+        if (email.indexOf('@@') < 0)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        if (email.indexOf('.') < 1)
+        {
+            alert('Please provide a valid Email');
+            return;
+        }
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl + '/Account/RequestPasswordReset?email=' + email,
+            contentType: "application/json",
+            dataType: 'json',
+            beforeSend: function () { window.showUiBusy(); },
+            success: function (response)
+            {
+                window.hideUiBusy();
+                alert(response.Message);
+                if (response.Code < 1)
+                {
+                    return;
+                }
+                goToSignIn();
+            }
+        });
+    }
+
+    $("#signInSection input:not(button)").keypress(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            signIn();
+        }
+    });
+</script>
+}
+

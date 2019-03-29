@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Crims.Data.Models.BaseData>
+
+@{
+    ViewBag.Title = "Data With no Photo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header tblList">
+    <h1>Data With no Photo</h1>
+    <hr />
+</section>
+<section class="content tblList">
+
+    <table class="table display">
+        <thead>
+        <tr>
+            <th>Project Primary Code</th>
+            <th>Surname </th>
+            <th>First Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectPrimaryCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
+

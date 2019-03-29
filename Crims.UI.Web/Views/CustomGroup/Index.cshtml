@@ -1,0 +1,200 @@
+﻿@model IEnumerable<Crims.Data.Models.CustomGroup>
+
+@{
+    ViewBag.Title = "Custom Groups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Manage Custom Groups</h1>
+    <hr />
+    <p>
+        <a data-target='#add_modal' role="button" class="btn btn-primary  btn_add" data-toggle="modal">
+            <i class="fa fa-file 2x"></i> New Custom Group
+        </a>
+    </p>
+</section>
+<section class="content">
+    <table class="table display" id="TableList">
+        <thead>
+            <tr>
+                <th>Group Name </th>
+                <th>Tab Index </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TabIndex)
+                    </td>
+                    <td><a data-target='#add_modal' role='button' data-edit-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default editBtn' data-toggle='modal'><i class='fa fa-edit'></i></a></td>
+                    <td><a data-target='#delete_modal' role='button' data-delete-id='@Html.DisplayFor(modelItem => item.TableId)' class='btn btn-default deleteBtn' data-toggle='modal'><i class='fa fa-trash-o'></i></a></td>
+                    
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</section>
+
+<!--Details-->
+<div class="modal fade" id="details_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="details_modal_body">
+        </div>
+    </div>
+</div>
+
+<!--Process-->
+<div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="process_modal_body">
+        </div>
+    </div>
+</div>
+
+<!--Delete-->
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="delete_modal_body">
+        </div>
+    </div>
+</div>
+
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        var customGroupScope = { TableId: 0, GroupName: '', TabIndex: '', CustomGroupId: window.generateUid().toUpperCase() };
+        
+        var baseUrl = '@Url.Content("~")'.replace(/\/$/, '');
+        $(function ()
+        {
+
+            //Load the add page
+            $(".btn_add").click(function ()
+            {
+                $("#process_modal_body").load(baseUrl + '/CustomGroup/GetView', function ()
+                {
+                    $("#myModalLabel").html('Create Custom Group');
+                });
+
+            });
+
+            //Load the edit page
+            $(".editBtn").click(function ()
+            {
+                var itemId = $(this).data("edit-id");
+                if (itemId < 1)
+                {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                $('.showBusy').fadeIn();
+
+                $.ajax({
+                    url: baseUrl + '/CustomGroup/GetCustomGroup?id=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (response)
+                    {
+                        $('.showBusy').fadeOut();
+                        if (!response || response.TableId < 1)
+                        {
+                            alert('Custom Group information could not be retrieved. Please try again or contact Support team');
+                            return;
+                        }
+
+                        $("#process_modal_body").load(baseUrl + '/CustomGroup/GetView', function ()
+                        {
+                            customGroupScope = response;
+                            $("#myModalLabel").html('Update Custom Group');
+                            $("#GroupName").val(response.GroupName);
+                            $("#TabIndex").val(response.TabIndex);
+                            $("#tableId").val(response.TableId);
+                        });
+                    }
+                });
+
+            });
+            //Load the delete page
+            $(".deleteBtn").click(function ()
+            {
+                var itemId = $(this).data("delete-id");
+                if (!itemId || itemId < 1) {
+                    alert('Invalid selection');
+                    return;
+                }
+
+                $('.showBusy').fadeIn();
+
+                $.ajax({
+                    url: baseUrl + '/CustomGroup/DeleteCustomGroup?customGroupTableId=' + itemId,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'POST',
+                    beforeSend: function() {
+                        if (!confirm('Do you want to delete this item?'))
+                        {
+                            return;
+                        }
+                    },
+                    success: function (response)
+                    {
+                        $('.showBusy').fadeOut();
+                        alert(response.Message);
+                        if (!response || response.Code < 1)
+                        {
+                            return;
+                        }
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+        function processCustomGroup()
+        {
+            customGroupScope.GroupName = $("#GroupName").val();
+            customGroupScope.TabIndex = $("#TabIndex").val();
+
+            $('.showBusy').fadeIn();
+            var url = '';
+            if (customGroupScope.TableId > 0) {
+                url = baseUrl + '/CustomGroup/EditCustomGroup';
+            } else {
+                url = baseUrl + '/CustomGroup/CreateCustomGroup';
+            }
+            $.ajax({
+                url: url,
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({ customGroup: customGroupScope }),
+                type: 'POST',
+                success: function (response)
+                {
+                    $('.showBusy').fadeOut();
+                    alert(response.Message);
+
+                    if (!response || response.Code < 1)
+                    {
+                        return;
+                    }
+
+                    location.reload();
+                }
+            });
+        }
+
+    </script>
+}
